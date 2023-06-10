@@ -90,7 +90,8 @@ class FirstSignupViewController: UIViewController {
         }
         nameTextField.snp.makeConstraints {
 //            $0.top.equalTo(imagePlusButton.snp.top).inset(30)
-            $0.top.equalToSuperview().inset(378.52)       $0.left.right.equalToSuperview().inset(45)
+            $0.top.equalToSuperview().inset(378.52)
+            $0.left.right.equalToSuperview().inset(45)
             $0.width.equalTo(300)
             $0.height.equalTo(40)
         }

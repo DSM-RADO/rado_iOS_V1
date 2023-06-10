@@ -4,8 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>PTSansNarrow-Bold.ttf</string>
-		<string></string>
+		<string>PTSansNarrow-Bold.otf</string>
+		<string>PTSansNarrow-Regular.ttf</string>
 		<string></string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

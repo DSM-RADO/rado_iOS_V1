@@ -61,6 +61,7 @@ class MainFeedViewController: UIViewController {
             $0.width.height.equalTo(60)
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)

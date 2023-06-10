@@ -9,7 +9,7 @@ class StartingPageViewController: UIViewController {
     }
     let mainName = UILabel().then {
         $0.text = "RADO"
-        $0.font = UIFont(name: "PTSansNarrow-Bold", size: 48)
+        $0.font = UIFont(name: "PTSans-NarrowBold", size: 48)
 //        $0.font = UIFont.systemFont(ofSize: 48)
         //폰트 바꾼뒤에 사이즈 48로 바꾸기
         $0.textColor = UIColor(named: "navy")
@@ -32,7 +32,6 @@ class StartingPageViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         navigationbar()
-        
     }
     
     
