@@ -81,13 +81,11 @@ class FirstSignupViewController: UIViewController {
         }
     }
     
- 
     @objc func moveSecondSignupView() {
         self.navigationController?.pushViewController(SecondSignupViewController(), animated: true)
         let loginBackbutton = UIBarButtonItem(title: "회원가입", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = loginBackbutton
         self.navigationItem.backBarButtonItem?.tintColor = .black
     }
-    
 }
 
