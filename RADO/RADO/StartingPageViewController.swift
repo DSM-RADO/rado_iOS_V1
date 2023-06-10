@@ -18,14 +18,14 @@ class StartingPageViewController: UIViewController {
         $0.setTitle("로그인", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         $0.backgroundColor = UIColor(named: "lightGray")
-        $0.setTitleColor(UIColor(named: "loginTextColor"), for: .normal)
+        $0.setTitleColor(UIColor(named: "gray"), for: .normal)
         $0.layer.cornerRadius = 10
     }
     let signupButton = UIButton(type: .system).then {
         $0.setTitle("회원가입", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         $0.backgroundColor = UIColor(named: "lightGray")
-        $0.setTitleColor(UIColor(named: "loginTextColor"), for: .normal)
+        $0.setTitleColor(UIColor(named: "gray"), for: .normal)
         $0.layer.cornerRadius = 10
     }
     override func viewDidLoad() {
@@ -66,14 +66,13 @@ class StartingPageViewController: UIViewController {
         }
         loginButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(643)
-            $0.left.equalToSuperview().inset(43)
+            $0.left.right.equalToSuperview().inset(42.5)
             $0.height.equalTo(45)
             $0.width.equalTo(304)
         }
         signupButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(696)
-            $0.bottom.equalToSuperview().inset(103)
-            $0.left.equalToSuperview().inset(43)
+            $0.left.right.equalToSuperview().inset(42.5)
             $0.height.equalTo(45)
             $0.width.equalTo(304)
         }

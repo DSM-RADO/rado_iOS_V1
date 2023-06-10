@@ -30,16 +30,6 @@ class FirstLoginViewController: UIViewController {
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.layer.cornerRadius = 10
     }
-    let passwordCheckTextField = UITextField().then {
-        $0.placeholder = "비밀번호 확인"
-        $0.font = UIFont.systemFont(ofSize: 15)
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -16.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.layer.cornerRadius = 10
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -57,31 +47,25 @@ class FirstLoginViewController: UIViewController {
             moveViewButton,
             idTextField,
             passwordTextField,
-            passwordCheckTextField,
         ].forEach({self.view.addSubview($0)})
     }
     
     func makeConstraints() {
         moveViewButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(774)
+            $0.bottom.equalToSuperview()
+            $0.left.right.equalToSuperview()
             $0.width.equalTo(390)
             $0.height.equalTo(70)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(143)
-            $0.left.equalToSuperview().inset(31)
+            $0.left.right.equalToSuperview().inset(31)
             $0.width.equalTo(328)
             $0.height.equalTo(37)
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(self.idTextField.snp.bottom).offset(8)
-            $0.left.equalToSuperview().inset(31)
-            $0.width.equalTo(328)
-            $0.height.equalTo(37)
-        }
-        passwordCheckTextField.snp.makeConstraints {
-            $0.top.equalTo(self.passwordTextField.snp.bottom).offset(8)
-            $0.left.equalToSuperview().inset(31)
+            $0.left.right.equalToSuperview().inset(31)
             $0.width.equalTo(328)
             $0.height.equalTo(37)
         }

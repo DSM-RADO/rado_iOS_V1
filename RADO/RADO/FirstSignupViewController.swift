@@ -27,6 +27,14 @@ class FirstSignupViewController: UIViewController {
         $0.rightViewMode = .always
         $0.layer.cornerRadius = 10
     }
+    let profileImage = UIImageView().then {
+        $0.image = UIImage(named: "testImage")
+        //원형으로 만들기
+    }
+    let imagePlusButton = UIButton(type: .system).then {
+        $0.setTitle("추가하기", for: .normal)
+        $0.setTitleColor(UIColor(named: "gray"), for: .normal)
+    }
 //    let birthDayTextField = UITextField().then {
 //        $0.placeholder = "생년월일"
 //        $0.font = UIFont.systemFont(ofSize: 15)
@@ -39,9 +47,7 @@ class FirstSignupViewController: UIViewController {
 //    }
     let birthDayPicker = UIDatePicker().then {
         $0.preferredDatePickerStyle = .wheels
-    }
-    let profileImage = UIImageView().then {
-        $0.image = UIImage(named: "testImage")
+          $0.datePickerMode = .date
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +67,31 @@ class FirstSignupViewController: UIViewController {
 //            birthDayTextField,
             birthDayPicker,
             profileImage,
+            imagePlusButton,
         ].forEach({self.view.addSubview($0)})
     }
     
     func makeConstraints() {
         moveViewButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(774)
+            $0.bottom.equalToSuperview()
+            $0.left.right.equalToSuperview()
             $0.width.equalTo(390)
             $0.height.equalTo(70)
         }
+        profileImage.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(181)
+            $0.left.right.equalToSuperview().inset(120)
+            $0.width.equalTo(150)
+            $0.height.equalTo(151.52)
+        }
+        imagePlusButton.snp.makeConstraints {
+            $0.top.equalTo(profileImage.snp.bottom).offset(10)
+            $0.left.right.equalToSuperview().inset(166.5)
+        }
         nameTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(314.52)
-            $0.left.equalToSuperview().inset(45)
+//            $0.top.equalTo(imagePlusButton.snp.top).inset(30)
+            $0.top.equalToSuperview().inset(378.52)
+            $0.left.right.equalToSuperview().inset(45)
             $0.width.equalTo(300)
             $0.height.equalTo(40)
         }
@@ -88,9 +107,8 @@ class FirstSignupViewController: UIViewController {
             $0.width.equalTo(300)
             $0.height.equalTo(40)
         }
-//        profileImage.snp.makeConstraints {
-//        }
     }
+    
  
     @objc func moveSecondSignupView() {
         self.navigationController?.pushViewController(SecondSignupViewController(), animated: true)
@@ -100,3 +118,4 @@ class FirstSignupViewController: UIViewController {
     }
     
 }
+
