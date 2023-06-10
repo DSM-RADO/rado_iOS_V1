@@ -70,7 +70,6 @@ class FirstSignupViewController: UIViewController {
         }
         imagePlusButton.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
-            $0.left.right.equalToSuperview().inset(166.5)
             $0.centerX.equalToSuperview()
         }
         nameTextField.snp.makeConstraints {
