@@ -35,20 +35,6 @@ class FirstSignupViewController: UIViewController {
         $0.setTitle("추가하기", for: .normal)
         $0.setTitleColor(UIColor(named: "gray"), for: .normal)
     }
-//    let birthDayTextField = UITextField().then {
-//        $0.placeholder = "생년월일"
-//        $0.font = UIFont.systemFont(ofSize: 15)
-//        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
-//        $0.leftViewMode = .always
-//        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -17.0, height: 0.0))
-//        $0.rightViewMode = .always
-//        $0.backgroundColor = UIColor(named: "lightGray")
-//        $0.layer.cornerRadius = 10
-//    }
-    let birthDayPicker = UIDatePicker().then {
-        $0.preferredDatePickerStyle = .wheels
-          $0.datePickerMode = .date
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -64,8 +50,6 @@ class FirstSignupViewController: UIViewController {
         [
             moveViewButton,
             nameTextField,
-//            birthDayTextField,
-            birthDayPicker,
             profileImage,
             imagePlusButton,
         ].forEach({self.view.addSubview($0)})
@@ -79,31 +63,19 @@ class FirstSignupViewController: UIViewController {
             $0.height.equalTo(70)
         }
         profileImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(181)
-            $0.left.right.equalToSuperview().inset(120)
+            $0.top.equalToSuperview().inset(171)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(150)
             $0.height.equalTo(151.52)
         }
         imagePlusButton.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
             $0.left.right.equalToSuperview().inset(166.5)
+            $0.centerX.equalToSuperview()
         }
         nameTextField.snp.makeConstraints {
-//            $0.top.equalTo(imagePlusButton.snp.top).inset(30)
-            $0.top.equalToSuperview().inset(378.52)
-            $0.left.right.equalToSuperview().inset(45)
-            $0.width.equalTo(300)
-            $0.height.equalTo(40)
-        }
-//        birthDayTextField.snp.makeConstraints {
-//            $0.top.equalTo(self.nameTextField.snp.bottom).offset(10)
-//            $0.left.equalToSuperview().inset(45)
-//            $0.width.equalTo(300)
-//            $0.height.equalTo(40)
-//        }
-        birthDayPicker.snp.makeConstraints {
-            $0.top.equalTo(self.nameTextField.snp.bottom).offset(10)
-            $0.left.equalToSuperview().inset(45)
+            $0.top.equalTo(imagePlusButton.snp.bottom).offset(30)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(300)
             $0.height.equalTo(40)
         }

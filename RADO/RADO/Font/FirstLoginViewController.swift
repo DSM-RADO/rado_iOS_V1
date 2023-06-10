@@ -59,13 +59,13 @@ class FirstLoginViewController: UIViewController {
         }
         idTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(143)
-            $0.left.right.equalToSuperview().inset(31)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(328)
             $0.height.equalTo(40)
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(self.idTextField.snp.bottom).offset(8)
-            $0.left.right.equalToSuperview().inset(21)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(328)
             $0.height.equalTo(40)
         }

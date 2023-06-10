@@ -10,8 +10,6 @@ class StartingPageViewController: UIViewController {
     let mainName = UILabel().then {
         $0.text = "RADO"
         $0.font = UIFont(name: "PTSans-NarrowBold", size: 48)
-//        $0.font = UIFont.systemFont(ofSize: 48)
-        //폰트 바꾼뒤에 사이즈 48로 바꾸기
         $0.textColor = UIColor(named: "navy")
     }
     let loginButton = UIButton(type: .system).then {
@@ -60,8 +58,7 @@ class StartingPageViewController: UIViewController {
         mainName.snp.makeConstraints {
             $0.top.equalToSuperview().inset(466)
             $0.bottom.equalToSuperview().inset(329)
-            $0.left.equalToSuperview().inset(145.5)
-            $0.right.equalToSuperview().inset(145.5)
+            $0.left.right.equalToSuperview().inset(145.5)
         }
         loginButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(675)
