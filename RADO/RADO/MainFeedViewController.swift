@@ -15,16 +15,21 @@ class MainFeedViewController: UIViewController {
         $0.text = "피드"
         $0.font = UIFont.systemFont(ofSize: 24)
     }
+    let settingButton = UIButton(type: .system).then {
+        $0.setImage(UIImage(named: "settingImage"), for: .normal)
+        $0.tintColor = UIColor(named: "navy")
+    }
     let tableView = UITableView().then {
         $0.backgroundColor = .white
         $0.allowsSelection = true
 //        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
     let feedPlusButton = UIButton(type: .system).then {
-        $0.setTitle("+", for: .normal)
-        $0.setTitleColor(UIColor.white, for: .normal)
+        $0.setImage(UIImage(named: "plusImage"), for: .normal)
+        $0.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        $0.tintColor = .white
         $0.backgroundColor = UIColor(named: "pink")
-        $0.layer.cornerRadius = 70
+        $0.layer.cornerRadius = 30
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +45,7 @@ class MainFeedViewController: UIViewController {
     func addSubview() {
         [
             feedLabel,
+            settingButton,
             tableView,
             feedPlusButton
         ].forEach({self.view.addSubview($0)})
@@ -49,6 +55,11 @@ class MainFeedViewController: UIViewController {
         feedLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(22)
             $0.left.equalToSuperview().inset(26)
+        }
+        settingButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(20)
+            $0.right.equalToSuperview().inset(27)
+            $0.width.height.equalTo(30)
         }
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(67)
