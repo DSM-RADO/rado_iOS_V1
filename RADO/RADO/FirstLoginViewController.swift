@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 import Then
-//test
+
 class FirstLoginViewController: UIViewController {
 
     let moveViewButton = UIButton(type: .system).then {
@@ -53,20 +53,19 @@ class FirstLoginViewController: UIViewController {
     func makeConstraints() {
         moveViewButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.width.equalTo(390)
+            $0.width.equalToSuperview()
             $0.height.equalTo(70)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(143)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(328)
+            $0.left.right.equalToSuperview().inset(21)
             $0.height.equalTo(40)
         }
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(self.idTextField.snp.bottom).offset(8)
+            $0.top.equalTo(idTextField.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(328)
+            $0.left.right.equalToSuperview().inset(21)
             $0.height.equalTo(40)
         }
     }

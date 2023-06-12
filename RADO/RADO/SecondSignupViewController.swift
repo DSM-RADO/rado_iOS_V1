@@ -71,34 +71,29 @@ class SecondSignupViewController: UIViewController {
     func makeConstraints() {
         moveViewButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.width.equalTo(390)
+            $0.width.equalToSuperview()
             $0.height.equalTo(71)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(150)
             $0.left.equalToSuperview().inset(31)
             $0.right.equalToSuperview().inset(123)
-            $0.width.equalTo(224)
             $0.height.equalTo(40)
         }
         idCheckButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(150)
             $0.left.equalTo(idTextField.snp.right).offset(5)
             $0.right.equalToSuperview().inset(31)
-            $0.width.equalTo(75)
             $0.height.equalTo(40)
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(328)
+            $0.left.right.equalToSuperview().inset(31)
             $0.height.equalTo(40)
         }
         passwordCheckTextField.snp.makeConstraints {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(328)
+            $0.left.right.equalToSuperview().inset(31)
             $0.height.equalTo(40)
         }
     }

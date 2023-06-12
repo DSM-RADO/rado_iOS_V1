@@ -51,26 +51,24 @@ class StartingPageViewController: UIViewController {
     func makeConstrains() {
         mainLogoImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(166)
-            $0.bottom.equalToSuperview().inset(378)
-            $0.left.equalToSuperview().inset(37.11)
-            $0.right.equalToSuperview().inset(37.11)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(300)
+            $0.height.equalTo(285)
         }
         mainName.snp.makeConstraints {
             $0.top.equalToSuperview().inset(466)
             $0.bottom.equalToSuperview().inset(329)
-            $0.left.right.equalToSuperview().inset(145.5)
+            $0.centerX.equalToSuperview()
         }
         loginButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(675)
+            $0.top.equalTo(mainName.snp.bottom).offset(160)
             $0.left.right.equalToSuperview().inset(42.5)
             $0.height.equalTo(45)
-            $0.width.equalTo(305)
         }
         signupButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(728)
+            $0.top.equalTo(loginButton.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(42.5)
             $0.height.equalTo(45)
-            $0.width.equalTo(305)
         }
         
     }
