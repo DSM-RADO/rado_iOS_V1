@@ -34,7 +34,6 @@ class FirstLoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         moveViewButton.addTarget(self, action: #selector(moveNextView), for: .touchUpInside)
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {

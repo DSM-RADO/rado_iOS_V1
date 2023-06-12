@@ -52,8 +52,7 @@ class StartingPageViewController: UIViewController {
         mainLogoImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(166)
             $0.bottom.equalToSuperview().inset(378)
-            $0.left.equalToSuperview().inset(37.11)
-            $0.right.equalToSuperview().inset(37.11)
+            $0.left.right.equalToSuperview().inset(37.11)
         }
         mainName.snp.makeConstraints {
             $0.top.equalToSuperview().inset(466)
