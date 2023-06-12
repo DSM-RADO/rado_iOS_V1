@@ -29,6 +29,8 @@ class FirstSignupViewController: UIViewController {
     }
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
+        $0.layer.cornerRadius = 75
+        $0.clipsToBounds = true
         //원형으로 만들기
     }
     let imagePlusButton = UIButton(type: .system).then {
@@ -59,7 +61,6 @@ class FirstSignupViewController: UIViewController {
         moveViewButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.left.right.equalToSuperview()
-            $0.width.equalTo(390)
             $0.height.equalTo(70)
         }
         profileImage.snp.makeConstraints {
@@ -74,8 +75,7 @@ class FirstSignupViewController: UIViewController {
         }
         nameTextField.snp.makeConstraints {
             $0.top.equalTo(imagePlusButton.snp.bottom).offset(30)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(300)
+            $0.left.right.equalToSuperview().inset(45)
             $0.height.equalTo(40)
         }
     }
