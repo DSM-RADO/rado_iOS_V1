@@ -91,14 +91,12 @@ class SecondSignupViewController: UIViewController {
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(328)
+            $0.left.right.equalToSuperview().inset(31)
             $0.height.equalTo(40)
         }
         passwordCheckTextField.snp.makeConstraints {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(328)
+            $0.left.right.equalToSuperview().inset(31)      
             $0.height.equalTo(40)
         }
     }
