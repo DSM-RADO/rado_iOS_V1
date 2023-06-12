@@ -63,12 +63,12 @@ class MainFeedViewController: UIViewController {
         }
         tableView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(67)
-            $0.width.equalTo(390)
-            $0.height.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
         }
         feedPlusButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(768)
-            $0.left.equalToSuperview().inset(311)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.right.equalToSuperview().inset(17)
             $0.width.height.equalTo(60)
         }
     }
