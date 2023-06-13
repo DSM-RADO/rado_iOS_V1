@@ -22,7 +22,7 @@ class MainFeedViewController: UIViewController {
     let tableView = UITableView().then {
         $0.backgroundColor = .white
         $0.allowsSelection = true
-//        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
+        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
     let feedPlusButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "plusImage"), for: .normal)
@@ -34,7 +34,6 @@ class MainFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-
     }
     
     override func viewDidLayoutSubviews() {
