@@ -46,7 +46,14 @@ class MainFeedViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    //뷰에서 네비게이션 바를 숨김
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    //위에서 숨긴 네비게이션바를 다음 뷰에서 다시 보여줌
+    
     func addSubview() {
         [
             feedLabel,
@@ -81,7 +88,10 @@ class MainFeedViewController: UIViewController {
     
     @objc func feedPlusButton() {
         self.navigationController?.pushViewController(FeedContentViewController(), animated: true)
-       /* let images2 = UIImage(named: "testImage")!
+        let Backbutton = UIBarButtonItem(title: "회원가입", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = Backbutton
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+        /* let images2 = UIImage(named: "testImage")!
         images.append(images2)
         tableView.reloadData()*/
         //위 코드들을 피드부분으로 옮겨서 완료버튼을 눌렀을 때 셀이 생기게하기
