@@ -48,9 +48,9 @@ class FeedContentViewController: UIViewController {
 //            $0.height.equalToSuperview().inset(64)
 //        }
         textFieldBackground.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(764)
-            $0.width.equalToSuperview()
             $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalTo(77)
         }
         feedContentField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(12)
