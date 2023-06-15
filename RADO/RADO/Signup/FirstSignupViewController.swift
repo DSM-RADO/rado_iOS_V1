@@ -19,6 +19,7 @@ class FirstSignupViewController: UIViewController {
     }
     let nameTextField = UITextField().then {
         $0.placeholder = "이름"
+        $0.autocapitalizationType = .none
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))

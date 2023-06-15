@@ -1,16 +1,12 @@
-//
-//  MainFeedViewController.swift
-//  RADO
-//
-//  Created by 조영준 on 2023/06/08.
-//
-
 import UIKit
 import SnapKit
 import Then
 
 class MainFeedViewController: UIViewController {
-
+    var images: [UIImage] = [
+        UIImage(named: "testImage")!
+    ]
+    
     let feedLabel = UILabel().then {
         $0.text = "피드"
         $0.font = UIFont.systemFont(ofSize: 24)
@@ -24,7 +20,7 @@ class MainFeedViewController: UIViewController {
         $0.allowsSelection = true
         $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
     }
-    let feedPlusButton = UIButton(type: .system).then {
+    let feedAddButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "plusImage"), for: .normal)
         $0.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         $0.tintColor = .white
@@ -34,6 +30,11 @@ class MainFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        feedAddButton.addTarget(self, action: #selector(feedPlusButton), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,12 +42,17 @@ class MainFeedViewController: UIViewController {
         makeConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
     func addSubview() {
         [
             feedLabel,
             settingButton,
             tableView,
-            feedPlusButton
+            feedAddButton
         ].forEach({self.view.addSubview($0)})
     }
     
@@ -65,16 +71,37 @@ class MainFeedViewController: UIViewController {
             $0.bottom.equalToSuperview()
             $0.width.equalToSuperview()
         }
-        feedPlusButton.snp.makeConstraints {
+        feedAddButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(16)
             $0.right.equalToSuperview().inset(17)
             $0.width.height.equalTo(60)
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
 
+    
+    @objc func feedPlusButton() {
+        self.navigationController?.pushViewController(FeedContentViewController(), animated: true)
+       /* let images2 = UIImage(named: "testImage")!
+        images.append(images2)
+        tableView.reloadData()*/
+        //위 코드들을 피드부분으로 옮겨서 완료버튼을 눌렀을 때 셀이 생기게하기
+    }
+    
+    
+}
+
+extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.images.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell else {
+            fatalError("The TableView coul no dequeue a CustomCell in ViewController")
+        }
+        let image = self.images[indexPath.row]
+        cell.configure(with: image, and: "")
+        return cell
+    }
+    
 }

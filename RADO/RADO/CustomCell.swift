@@ -22,6 +22,7 @@ class CustomCell: UITableViewCell {
     let userNameLabel = UILabel().then {
         $0.text = "유지우"
         $0.font = UIFont.systemFont(ofSize: 18)
+        $0.textColor = .black
     }
     let minutesAgoLabel = UILabel().then {
         $0.text = "20분 전"
@@ -38,6 +39,7 @@ class CustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubView()
+        makeConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -46,7 +48,7 @@ class CustomCell: UITableViewCell {
     
     func configure(with image: UIImage, and label: String) {
         self.profileImage.image = image
-        self.myLabel.text = label
+        self.userNameLabel.text = label
     }
     
     func addSubView() {
@@ -60,10 +62,26 @@ class CustomCell: UITableViewCell {
     }
     func makeConstraints() {
         profileImage.snp.makeConstraints {
-            $0.top.equalTo(self.contentView.layoutMarginsGuide.snp.top)
-            $0.bottom.equalTo(self.contentView.layoutMarginsGuide.snp.bottom)
-            $0.left.equalTo(self.contentView.layoutMarginsGuide.snp.left)
-            $0.width.equalTo(66)
+            $0.top.equalToSuperview().inset(24)
+            $0.left.equalToSuperview().inset(14)
+            $0.width.height.equalTo(50)
+        }
+        userNameLabel.snp.makeConstraints {
+            $0.top.equalTo(contentView.snp.top).inset(40)
+            $0.left.equalTo(profileImage.snp.right).offset(10)
+            $0.bottom.equalTo(contentView.snp.bottom)
+        }
+        minutesAgoLabel.snp.makeConstraints {
+            $0.left.equalTo(profileImage.snp.right).offset(80)
+            $0.top.equalTo(userNameLabel.snp.bottom).inset(70)
+            $0.bottom.equalTo(contentView.snp.bottom)
+        }
+//        settingButton.snp.makeConstraints {
+//
+//        }
+        feedContentLabel.snp.makeConstraints {
+            $0.right.equalTo(self.contentView).inset(30)
+            $0.top.equalTo(self.contentView).inset(20)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80E3A82532235D9F42E3722C /* Pods_RADO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291050C0CACDE63092304359 /* Pods_RADO.framework */; };
+		8804B49F2A39D7D200F90047 /* FeedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */; };
 		881E58A82A345E470061BE04 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A52A345E470061BE04 /* OFL.txt */; };
 		881E58A92A345E470061BE04 /* PTSansNarrow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A62A345E470061BE04 /* PTSansNarrow-Regular.ttf */; };
 		881E58AA2A345E470061BE04 /* PTSansNarrow-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A72A345E470061BE04 /* PTSansNarrow-Bold.otf */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		291050C0CACDE63092304359 /* Pods_RADO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RADO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AB1FB23B6B55A8900FB3060 /* Pods-RADO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RADO.release.xcconfig"; path = "Target Support Files/Pods-RADO/Pods-RADO.release.xcconfig"; sourceTree = "<group>"; };
+		8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentViewController.swift; sourceTree = "<group>"; };
 		881E58A52A345E470061BE04 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		881E58A62A345E470061BE04 /* PTSansNarrow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansNarrow-Regular.ttf"; sourceTree = "<group>"; };
 		881E58A72A345E470061BE04 /* PTSansNarrow-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansNarrow-Bold.otf"; sourceTree = "<group>"; };
@@ -64,6 +66,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8804B49D2A39D79600F90047 /* MainFeedContentView */ = {
+			isa = PBXGroup;
+			children = (
+				887A042F2A32165400F02845 /* MainFeedViewController.swift */,
+				8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */,
+			);
+			path = MainFeedContentView;
+			sourceTree = "<group>";
+		};
 		881E58A42A345DDA0061BE04 /* PTSans */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +107,11 @@
 			isa = PBXGroup;
 			children = (
 				88C59CCB2A37EC9700C875E3 /* Signup */,
+				8804B49D2A39D79600F90047 /* MainFeedContentView */,
 				88B53F862A30B7C0003DEE96 /* StartingPageViewController.swift */,
 				8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */,
-				887A042F2A32165400F02845 /* MainFeedViewController.swift */,
 				88BB6AA12A32B1BC00110798 /* CustomCell.swift */,
+				88B53F902A30B7C1003DEE96 /* Info.plist */,
 				88C59CCC2A37ECB400C875E3 /* SupportFile */,
 				881E58A42A345DDA0061BE04 /* PTSans */,
 			);
@@ -122,7 +134,6 @@
 				88B53F842A30B7C0003DEE96 /* SceneDelegate.swift */,
 				88B53F8B2A30B7C1003DEE96 /* Assets.xcassets */,
 				88B53F8D2A30B7C1003DEE96 /* LaunchScreen.storyboard */,
-				88B53F902A30B7C1003DEE96 /* Info.plist */,
 			);
 			path = SupportFile;
 			sourceTree = "<group>";
@@ -261,6 +272,7 @@
 				88B53F852A30B7C0003DEE96 /* SceneDelegate.swift in Sources */,
 				887A042A2A31B08800F02845 /* SecondSignupViewController.swift in Sources */,
 				88BB6AA22A32B1BC00110798 /* CustomCell.swift in Sources */,
+				8804B49F2A39D7D200F90047 /* FeedContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

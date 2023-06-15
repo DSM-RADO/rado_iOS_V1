@@ -12,6 +12,7 @@ class SecondSignupViewController: UIViewController {
     }
     let idTextField = UITextField().then {
         $0.placeholder = "아이디"
+        $0.autocapitalizationType = .none
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
@@ -29,6 +30,7 @@ class SecondSignupViewController: UIViewController {
     }
     let passwordTextField = UITextField().then {
         $0.placeholder = "비밀번호"
+        $0.autocapitalizationType = .none
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
         $0.leftViewMode = .always
@@ -39,6 +41,7 @@ class SecondSignupViewController: UIViewController {
     }
     let passwordCheckTextField = UITextField().then {
         $0.placeholder = "비밀번호 확인"
+        $0.autocapitalizationType = .none
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
         $0.leftViewMode = .always
@@ -79,7 +82,6 @@ class SecondSignupViewController: UIViewController {
             $0.top.equalToSuperview().inset(150)
             $0.left.equalToSuperview().inset(31)
             $0.right.equalToSuperview().inset(123)
-            $0.width.equalTo(224)
             $0.height.equalTo(40)
         }
         idCheckButton.snp.makeConstraints {
