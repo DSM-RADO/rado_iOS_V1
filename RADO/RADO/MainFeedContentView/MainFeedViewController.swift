@@ -32,6 +32,7 @@ class MainFeedViewController: UIViewController {
 //        tableView.separatorStyle = .none
 //        tableView.rowHeight = UITableView.automaticDimension
         feedAddButton.addTarget(self, action: #selector(feedPlusButton), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(moveUserSetting), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,6 +95,12 @@ class MainFeedViewController: UIViewController {
         //위 코드들을 피드부분으로 옮겨서 완료버튼을 눌렀을 때 셀이 생기게하기
     }
     
+    @objc func moveUserSetting() {
+        self.navigationController?.pushViewController(UserSettingViewController(), animated: true)
+        let Backbutton = UIBarButtonItem(title: "새 피드", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = Backbutton
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+    }
     
 }
 
