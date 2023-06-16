@@ -29,6 +29,7 @@ class FeedContentViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         addSubView()
         makeConstrains()
     }

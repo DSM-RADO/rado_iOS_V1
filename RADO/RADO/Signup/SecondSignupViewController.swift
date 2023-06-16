@@ -58,6 +58,7 @@ class SecondSignupViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         addSubView()
         makeConstraints()
     }

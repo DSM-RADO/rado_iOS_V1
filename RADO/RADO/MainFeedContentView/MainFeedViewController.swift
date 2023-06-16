@@ -36,6 +36,7 @@ class MainFeedViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         addSubview()
         makeConstraints()
     }

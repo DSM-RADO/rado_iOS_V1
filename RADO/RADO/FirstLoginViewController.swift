@@ -40,6 +40,7 @@ class FirstLoginViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         addSubView()
         makeConstraints()
     }

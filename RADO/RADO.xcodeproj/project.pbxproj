@@ -168,6 +168,8 @@
 			dependencies = (
 			);
 			name = RADO;
+			packageProductDependencies = (
+			);
 			productName = RADO;
 			productReference = 88B53F7F2A30B7C0003DEE96 /* RADO.app */;
 			productType = "com.apple.product-type.application";
@@ -196,6 +198,8 @@
 				Base,
 			);
 			mainGroup = 88B53F762A30B7C0003DEE96;
+			packageReferences = (
+			);
 			productRefGroup = 88B53F802A30B7C0003DEE96 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

@@ -64,6 +64,7 @@ class UserSettingViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         addSubView()
         makeConstraints()
     }
