@@ -16,6 +16,7 @@ class FirstSignupViewController: UIViewController {
         $0.setTitle("다음", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         $0.setTitleColor(UIColor.white, for: .normal)
+        $0.layer.cornerRadius = 8
     }
     let nameTextField = UITextField().then {
         $0.placeholder = "이름"
@@ -60,8 +61,8 @@ class FirstSignupViewController: UIViewController {
     
     func makeConstraints() {
         moveViewButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
+            $0.left.right.equalToSuperview().inset(17)
             $0.height.equalTo(70)
         }
         profileImage.snp.makeConstraints {

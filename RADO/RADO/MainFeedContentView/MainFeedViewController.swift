@@ -67,7 +67,7 @@ class MainFeedViewController: UIViewController {
             $0.left.equalToSuperview().inset(26)
         }
         settingButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
+            $0.top.equalToSuperview().inset(200)
             $0.right.equalToSuperview().inset(27)
             $0.width.height.equalTo(30)
         }

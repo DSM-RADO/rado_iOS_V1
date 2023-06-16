@@ -9,6 +9,7 @@ class SecondSignupViewController: UIViewController {
         $0.setTitle("가입하기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         $0.setTitleColor(UIColor.white, for: .normal)
+        $0.layer.cornerRadius = 8
     }
     let idTextField = UITextField().then {
         $0.placeholder = "아이디"
@@ -73,10 +74,9 @@ class SecondSignupViewController: UIViewController {
     
     func makeConstraints() {
         moveViewButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.width.equalTo(390)
-            $0.height.equalTo(71)
+            $0.bottom.equalToSuperview().inset(10)
+            $0.left.right.equalToSuperview().inset(17)
+            $0.height.equalTo(70)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(150)

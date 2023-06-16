@@ -4,11 +4,15 @@ import Then
 
 class UserSettingViewController: UIViewController {
 
-    let moveViewButton = UIButton(type: .system).then {
-        $0.backgroundColor = UIColor(named: "navy")
-        $0.setTitle("다음", for: .normal)
-        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        $0.setTitleColor(UIColor.white, for: .normal)
+    let profileImage = UIImageView().then {
+        $0.image = UIImage(named: "testImage")
+        $0.layer.cornerRadius = 75
+        $0.clipsToBounds = true
+        //원형으로 만들기
+    }
+    let imagePlusButton = UIButton(type: .system).then {
+        $0.setTitle("변경하기", for: .normal)
+        $0.setTitleColor(UIColor(named: "gray"), for: .normal)
     }
     let userIdTextField = UITextField().then {
         $0.placeholder = "userId"
@@ -46,19 +50,17 @@ class UserSettingViewController: UIViewController {
         $0.rightViewMode = .always
         $0.layer.cornerRadius = 10
     }
-    let profileImage = UIImageView().then {
-        $0.image = UIImage(named: "testImage")
-        $0.layer.cornerRadius = 75
-        $0.clipsToBounds = true
-        //원형으로 만들기
-    }
-    let imagePlusButton = UIButton(type: .system).then {
-        $0.setTitle("변경하기", for: .normal)
-        $0.setTitleColor(UIColor(named: "gray"), for: .normal)
+    let deleteAccountButton = UIButton(type: .system).then {
+        $0.setTitle("회원탈퇴", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        $0.backgroundColor = UIColor(named: "lightGray")
+        $0.setTitleColor(UIColor(named: "navy"), for: .normal)
+        $0.layer.cornerRadius = 10
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+//        deleteAccountButton.addTarget(self, action: #selector(deleteAlert), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,21 +70,16 @@ class UserSettingViewController: UIViewController {
 
     func addSubView() {
         [
-            moveViewButton,
+            profileImage,
+            imagePlusButton,
             userIdTextField,
             userNameTextField,
             userBirthDayTextField,
-            profileImage,
-            imagePlusButton,
+            deleteAccountButton,
         ].forEach({self.view.addSubview($0)})
     }
     
     func makeConstraints() {
-        moveViewButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.left.right.equalToSuperview()
-            $0.height.equalTo(70)
-        }
         profileImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(147)
             $0.centerX.equalToSuperview()
@@ -108,6 +105,27 @@ class UserSettingViewController: UIViewController {
             $0.left.right.equalToSuperview().inset(45)
             $0.height.equalTo(40)
         }
+        deleteAccountButton.snp.makeConstraints {
+            $0.top.equalTo(userIdTextField.snp.bottom).offset(227)
+            $0.left.right.equalToSuperview().inset(45)
+            $0.height.equalTo(40)
+        }
     }
 
+//    @objc func deleteAlert() {
+//        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+//                
+//            let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
+//            let okAction = UIAlertAction(title: "YES", style: .default, handler: nil)
+//                
+//            alert.addAction(cancelAction)
+//            alert.addAction(okAction)
+//                
+//            let v = UIViewController()
+//            v.view.backgroundColor = UIColor.white
+//            alert.setValue(v, forKey: "contentViewController")
+//                
+//            self.present(alert, animated: false)
+//    }
+    
 }
