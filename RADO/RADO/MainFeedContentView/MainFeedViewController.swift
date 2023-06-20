@@ -4,7 +4,7 @@ import Then
 
 class MainFeedViewController: UIViewController {
     
-    var arr: [String] = []
+    static var arr: [String] = []
     let feedLabel = UILabel().then {
         $0.text = "피드"
         $0.font = UIFont.systemFont(ofSize: 24)
@@ -13,7 +13,7 @@ class MainFeedViewController: UIViewController {
         $0.setImage(UIImage(named: "settingImage"), for: .normal)
         $0.tintColor = UIColor(named: "navy")
     }
-    let tableView = UITableView().then {
+    static let tableView = UITableView().then {
         $0.backgroundColor = .white
         $0.allowsSelection = true
         $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.cellId)
@@ -28,8 +28,8 @@ class MainFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        MainFeedViewController.tableView.delegate = self
+        MainFeedViewController.tableView.dataSource = self
 //        tableView.separatorStyle = .none
 //        tableView.rowHeight = UITableView.automaticDimension
         feedAddButton.addTarget(self, action: #selector(feedPlusButton), for: .touchUpInside)
@@ -58,7 +58,7 @@ class MainFeedViewController: UIViewController {
         [
             feedLabel,
             settingButton,
-            tableView,
+            MainFeedViewController.tableView,
             feedAddButton
         ].forEach({self.view.addSubview($0)})
     }
@@ -69,12 +69,12 @@ class MainFeedViewController: UIViewController {
             $0.left.equalToSuperview().inset(26)
         }
         settingButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(200)
+            $0.top.equalToSuperview().inset(50)
             $0.right.equalToSuperview().inset(27)
             $0.width.height.equalTo(30)
         }
-        tableView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(67)
+        MainFeedViewController.tableView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(85)
             $0.bottom.equalToSuperview()
             $0.width.equalToSuperview()
         }
@@ -104,12 +104,12 @@ class MainFeedViewController: UIViewController {
 
 extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        return MainFeedViewController.arr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.cellId, for: indexPath) as! CustomCell
-        cell.textLabel?.text = arr[indexPath.row]
+        cell.textLabel?.text = MainFeedViewController.arr[indexPath.row]
         return cell
     }
     

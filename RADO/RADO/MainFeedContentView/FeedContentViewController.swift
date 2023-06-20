@@ -6,8 +6,7 @@ class FeedContentViewController: UIViewController {
     
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
-        //        $0.layer.cornerRadius = 75
-        $0.layer.cornerRadius = $0.frame.height/2
+        $0.layer.cornerRadius = 33
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
@@ -89,10 +88,10 @@ class FeedContentViewController: UIViewController {
     }
     @objc func closeTab() {
         navigationController?.popViewController(animated: true)
-//        let images2 = UIImage(named: "testImage")!
-//        arr.append(images2)
-//        tableView.reloadData()
-        //위 코드들을 피드부분으로 옮겨서 완료버튼을 눌렀을 때 셀이 생기게하기
+        let images2 = UIImage(named: "testImage")!
+//        let content = "\(feedContentField)"
+        MainFeedViewController.arr.append("dd")
+        MainFeedViewController.tableView.reloadData()
     }
     @objc func textFieldDidChange(_ sender: Any?) {
             self.feedContentLabel.text = self.feedContentField.text

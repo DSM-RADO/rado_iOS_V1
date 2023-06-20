@@ -31,7 +31,7 @@ class FirstSignupViewController: UIViewController {
     }
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
-        $0.layer.cornerRadius = 75
+        $0.layer.cornerRadius = 75.76
         $0.clipsToBounds = true
         //원형으로 만들기
     }
