@@ -48,7 +48,7 @@ class FeedContentViewController: UIViewController {
     func navigationBar() {
         let closeButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(closeTab))
         navigationItem.rightBarButtonItem = closeButton
-        closeButton.tintColor = .black
+        closeButton.tintColor = .lightGray
     }
     
     func addSubView() {
@@ -88,7 +88,6 @@ class FeedContentViewController: UIViewController {
         }
     }
     @objc func closeTab() {
-        let newViewController = FeedContentViewController()
         navigationController?.popViewController(animated: true)
 //        let images2 = UIImage(named: "testImage")!
 //        arr.append(images2)
