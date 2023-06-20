@@ -72,7 +72,7 @@ extension StartingPageViewController {
             $0.left.right.equalToSuperview().inset(37.11)
         }
         mainName.snp.makeConstraints {
-            $0.top.equalTo(mainLogoImage.snp.bottom)
+            $0.top.equalTo(mainLogoImage.snp.bottom).offset(10)
             $0.bottom.equalToSuperview().inset(329)
             $0.centerX.equalToSuperview()
         }
