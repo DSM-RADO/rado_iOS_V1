@@ -46,14 +46,14 @@ class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with image: UIImage, and label: String) {
-//        self.profileImage.image = image
-        self.userNameLabel.text = label
-    }
-    
+//    func configure(with image: UIImage, and label: String) {
+//        self.profileImage.image = profileImage
+//        self.userNameLabel.text = label
+//    }
+//
     func addSubView() {
         [
-//            profileImage,
+            profileImage,
             userNameLabel,
             minutesAgoLabel,
             settingButton,
@@ -61,11 +61,11 @@ class CustomCell: UITableViewCell {
         ].forEach({self.contentView.addSubview($0)})
     }
     func makeConstraints() {
-//        profileImage.snp.makeConstraints {
-//            $0.top.equalToSuperview().inset(24)
-//            $0.left.equalToSuperview().inset(14)
-//            $0.width.height.equalTo(50)
-//        }
+        profileImage.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(24)
+            $0.left.equalToSuperview().inset(14)
+            $0.width.height.equalTo(50)
+        }
         userNameLabel.snp.makeConstraints {
             $0.top.equalTo(contentView.snp.top).inset(40)
 //            $0.left.equalTo(profileImage.snp.right).offset(10)
