@@ -12,6 +12,10 @@
 		881E58A82A345E470061BE04 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A52A345E470061BE04 /* OFL.txt */; };
 		881E58A92A345E470061BE04 /* PTSansNarrow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A62A345E470061BE04 /* PTSansNarrow-Regular.ttf */; };
 		881E58AA2A345E470061BE04 /* PTSansNarrow-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A72A345E470061BE04 /* PTSansNarrow-Bold.otf */; };
+		88556D382A41F80400B6C65E /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D372A41F80400B6C65E /* HttpClient.swift */; };
+		88556D3A2A41F82900B6C65E /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D392A41F82900B6C65E /* AuthAPI.swift */; };
+		88556D3C2A41F83E00B6C65E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D3B2A41F83E00B6C65E /* Header.swift */; };
+		88556D3E2A41F86000B6C65E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D3D2A41F86000B6C65E /* LoginModel.swift */; };
 		8859A0F92A369A2F002E31B6 /* FirstLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */; };
 		887A04232A3159E200F02845 /* FirstSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A04222A3159E200F02845 /* FirstSignupViewController.swift */; };
 		887A042A2A31B08800F02845 /* SecondSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A04292A31B08800F02845 /* SecondSignupViewController.swift */; };
@@ -32,6 +36,10 @@
 		881E58A52A345E470061BE04 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		881E58A62A345E470061BE04 /* PTSansNarrow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansNarrow-Regular.ttf"; sourceTree = "<group>"; };
 		881E58A72A345E470061BE04 /* PTSansNarrow-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansNarrow-Bold.otf"; sourceTree = "<group>"; };
+		88556D372A41F80400B6C65E /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		88556D392A41F82900B6C65E /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		88556D3B2A41F83E00B6C65E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		88556D3D2A41F86000B6C65E /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginViewController.swift; sourceTree = "<group>"; };
 		887A04222A3159E200F02845 /* FirstSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSignupViewController.swift; sourceTree = "<group>"; };
 		887A04292A31B08800F02845 /* SecondSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignupViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +96,38 @@
 			path = PTSans;
 			sourceTree = "<group>";
 		};
+		88556D332A41F7AF00B6C65E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				88556D3D2A41F86000B6C65E /* LoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		88556D342A41F7BB00B6C65E /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				88556D3B2A41F83E00B6C65E /* Header.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		88556D352A41F7C000B6C65E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				88556D392A41F82900B6C65E /* AuthAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		88556D362A41F7CE00B6C65E /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				88556D372A41F80400B6C65E /* HttpClient.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
 		88B53F762A30B7C0003DEE96 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +149,10 @@
 		88B53F812A30B7C0003DEE96 /* RADO */ = {
 			isa = PBXGroup;
 			children = (
+				88556D362A41F7CE00B6C65E /* HTTP */,
+				88556D352A41F7C000B6C65E /* API */,
+				88556D342A41F7BB00B6C65E /* Header */,
+				88556D332A41F7AF00B6C65E /* Models */,
 				88B53F862A30B7C0003DEE96 /* StartingPageViewController.swift */,
 				8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */,
 				88C59CCB2A37EC9700C875E3 /* Signup */,
@@ -272,12 +316,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				889566C12A3B1F5A00B6D3BC /* UserSettingViewController.swift in Sources */,
+				88556D3E2A41F86000B6C65E /* LoginModel.swift in Sources */,
+				88556D3C2A41F83E00B6C65E /* Header.swift in Sources */,
 				88B53F872A30B7C0003DEE96 /* StartingPageViewController.swift in Sources */,
 				8859A0F92A369A2F002E31B6 /* FirstLoginViewController.swift in Sources */,
 				88B53F832A30B7C0003DEE96 /* AppDelegate.swift in Sources */,
+				88556D3A2A41F82900B6C65E /* AuthAPI.swift in Sources */,
 				887A04232A3159E200F02845 /* FirstSignupViewController.swift in Sources */,
 				887A04302A32165400F02845 /* MainFeedViewController.swift in Sources */,
 				88B53F852A30B7C0003DEE96 /* SceneDelegate.swift in Sources */,
+				88556D382A41F80400B6C65E /* HttpClient.swift in Sources */,
 				887A042A2A31B08800F02845 /* SecondSignupViewController.swift in Sources */,
 				88BB6AA22A32B1BC00110798 /* CustomCell.swift in Sources */,
 				8804B49F2A39D7D200F90047 /* FeedContentViewController.swift in Sources */,

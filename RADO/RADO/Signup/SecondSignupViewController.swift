@@ -51,6 +51,11 @@ class SecondSignupViewController: UIViewController {
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.layer.cornerRadius = 10
     }
+    let privacyLabel = UILabel().then {
+        $0.text = "가입시 개인정보 수집 및 이용약관에\n\t동의하는 것으로 간주합니다."
+        $0.numberOfLines = 2
+        $0.textColor = UIColor(named: "gray")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -70,6 +75,7 @@ class SecondSignupViewController: UIViewController {
             idCheckButton,
             passwordTextField,
             passwordCheckTextField,
+            privacyLabel,
         ].forEach({self.view.addSubview($0)})
     }
     
@@ -100,6 +106,11 @@ class SecondSignupViewController: UIViewController {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(31)      
             $0.height.equalTo(40)
+        }
+        privacyLabel.snp.makeConstraints {
+            $0.top.equalTo(passwordCheckTextField.snp.bottom).offset(306)
+            $0.centerX.equalToSuperview()
+            
         }
     }
     

@@ -4,6 +4,7 @@ import Then
 
 class FirstLoginViewController: UIViewController {
 
+    let httpClient = HTTPClient()
     let moveViewButton = UIButton(type: .system).then {
         $0.backgroundColor = UIColor(named: "navy")
         $0.setTitle("로그인 하기", for: .normal)
@@ -76,6 +77,44 @@ class FirstLoginViewController: UIViewController {
         let loginBackbutton = UIBarButtonItem(title: "로그인", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = loginBackbutton
         self.navigationItem.backBarButtonItem?.tintColor = .black
+                guard let id = idTextField.text,
+                      let password = passwordTextField.text else {
+                    return
+                }
+                login(id: id , password: password)
+        
+        
     }
     
+}
+
+extension FirstLoginViewController {
+    func login(id: String, password: String) {
+        print("통신함")
+        httpClient.post(
+            url: "/user/login",
+            parmas: [
+                "userId": id,
+                "userPassword": password
+            ],
+            header: Header.tokenIsEmpty.header()
+        ).response(completionHandler: { res in
+            switch res.response?.statusCode {
+            case 200:
+                let decorder = JSONDecoder()
+                do {
+                    let data = try decorder.decode(LoginModel.self, from: res.data!)
+                    print("로그인 성공")
+//                    self.accessTokenLabel.text = data.access_token
+                    print(data.accessToken)
+                    print(data.expiredAt)
+                } catch {
+                    print(res.response?.statusCode)
+                    print("로그인 실패")
+                }
+            default:
+                print("오류!! \(res.response?.statusCode)")
+            }
+        })
+    }
 }

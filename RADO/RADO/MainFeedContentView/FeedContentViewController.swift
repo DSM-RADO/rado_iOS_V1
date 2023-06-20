@@ -89,10 +89,13 @@ class FeedContentViewController: UIViewController {
     }
     @objc func closeTab() {
         navigationController?.popViewController(animated: true)
-        let images2 = UIImage(named: "testImage")!
-//        let content = "\(feedContentField)"
-        MainFeedViewController.arr.append(feedContentField.text ?? "")
-        MainFeedViewController.tableView.reloadData()
+        if (feedContentField.text == "") {
+            print("error")
+        } else {
+            let images2 = UIImage(named: "testImage")!
+            MainFeedViewController.arr.append(feedContentField.text ?? "")
+            MainFeedViewController.tableView.reloadData()
+        }
     }
     @objc func textFieldDidChange(_ sender: Any?) {
         self.feedContentLabel.text = self.feedContentField.text

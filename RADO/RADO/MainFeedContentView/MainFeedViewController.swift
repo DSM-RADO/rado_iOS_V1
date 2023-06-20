@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import Then
 
+
 class MainFeedViewController: UIViewController {
     
     static var arr: [String] = []
@@ -28,7 +29,8 @@ class MainFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        MainFeedViewController.tableView.rowHeight = 167
+//        MainFeedViewController.tableView.estimatedRowHeight = 0
+        MainFeedViewController.tableView.rowHeight = 150
         MainFeedViewController.tableView.delegate = self
         MainFeedViewController.tableView.dataSource = self
 //        tableView.separatorStyle = .none
@@ -65,6 +67,7 @@ class MainFeedViewController: UIViewController {
     }
     
     func makeConstraints() {
+
         feedLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(22)
             $0.left.equalToSuperview().inset(26)
@@ -113,7 +116,7 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = MainFeedViewController.arr[indexPath.row]
         return cell
     }
-    
+   
     
 }
 

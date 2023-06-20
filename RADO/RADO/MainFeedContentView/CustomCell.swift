@@ -26,7 +26,6 @@ class CustomCell: UITableViewCell {
     }
     let feedContentLabel = UILabel().then {
         $0.text = ""
-        $0.numberOfLines = 0 
         $0.font = UIFont.systemFont(ofSize: 14)
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -71,7 +70,7 @@ class CustomCell: UITableViewCell {
 //
 //        }
         feedContentLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(72)
+            $0.top.equalTo(profileImage.snp.bottom).offset(10)
             $0.left.equalToSuperview().inset(18)
             $0.right.equalToSuperview().inset(22)
         }
