@@ -4,6 +4,7 @@ import Then
 
 class MainFeedViewController: UIViewController {
     
+    var arr: [String] = []
     let feedLabel = UILabel().then {
         $0.text = "피드"
         $0.font = UIFont.systemFont(ofSize: 24)
@@ -12,11 +13,11 @@ class MainFeedViewController: UIViewController {
         $0.setImage(UIImage(named: "settingImage"), for: .normal)
         $0.tintColor = UIColor(named: "navy")
     }
-//    let tableView = UITableView().then {
-//        $0.backgroundColor = .white
-//        $0.allowsSelection = true
-//        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
-//    }
+    let tableView = UITableView().then {
+        $0.backgroundColor = .white
+        $0.allowsSelection = true
+        $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.cellId)
+    }
     let feedAddButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "plusImage"), for: .normal)
         $0.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
@@ -27,8 +28,8 @@ class MainFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-//        self.tableView.delegate = self
-//        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
 //        tableView.separatorStyle = .none
 //        tableView.rowHeight = UITableView.automaticDimension
         feedAddButton.addTarget(self, action: #selector(feedPlusButton), for: .touchUpInside)
@@ -57,7 +58,7 @@ class MainFeedViewController: UIViewController {
         [
             feedLabel,
             settingButton,
-//            tableView,
+            tableView,
             feedAddButton
         ].forEach({self.view.addSubview($0)})
     }
@@ -72,11 +73,11 @@ class MainFeedViewController: UIViewController {
             $0.right.equalToSuperview().inset(27)
             $0.width.height.equalTo(30)
         }
-//        tableView.snp.makeConstraints {
-//            $0.top.equalToSuperview().inset(67)
-//            $0.bottom.equalToSuperview()
-//            $0.width.equalToSuperview()
-//        }
+        tableView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(67)
+            $0.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
         feedAddButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(16)
             $0.right.equalToSuperview().inset(17)
@@ -87,13 +88,9 @@ class MainFeedViewController: UIViewController {
     
     @objc func feedPlusButton() {
         self.navigationController?.pushViewController(FeedContentViewController(), animated: true)
-        let Backbutton = UIBarButtonItem(title: "새 피드", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = Backbutton
+        let backButton = UIBarButtonItem(title: "새 피드", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
         self.navigationItem.backBarButtonItem?.tintColor = .black
-        /* let images2 = UIImage(named: "testImage")!
-        images.append(images2)
-        tableView.reloadData()*/
-        //위 코드들을 피드부분으로 옮겨서 완료버튼을 눌렀을 때 셀이 생기게하기
     }
     
     @objc func moveUserSetting() {
@@ -105,18 +102,17 @@ class MainFeedViewController: UIViewController {
     
 }
 
-//extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.images.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell else {
-//            fatalError("The TableView coul no dequeue a CustomCell in ViewController")
-//        }
-//        let image = self.images[indexPath.row]
-//        cell.configure(with: image, and: "")
-//        return cell
-//    }
-//
-//}
+extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.cellId, for: indexPath) as! CustomCell
+        cell.textLabel?.text = arr[indexPath.row]
+        return cell
+    }
+    
+    
+}
+

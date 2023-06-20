@@ -32,13 +32,29 @@ class StartingPageViewController: UIViewController {
         navigationbar()
     }
     
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         addSubView()
         makeConstrains()
         button()
     }
+
+    func navigationbar() {
+        self.navigationItem.leftBarButtonItem = nil
+        let signupBackbutton = UIBarButtonItem(title: "회원가입", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = signupBackbutton
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+    }
+    
+    func button() {
+        loginButton.addTarget(self, action: #selector(moveLoginPage), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(moveSignupPage), for: .touchUpInside)
+    }
+    
+}
+// MARK: addSubView & makeConstrains
+
+extension StartingPageViewController {
     func addSubView() {
         [
             mainLogoImage,
@@ -47,16 +63,16 @@ class StartingPageViewController: UIViewController {
             signupButton,
         ].forEach({self.view.addSubview($0)})
     }
-    
 
     func makeConstrains() {
+        //레이아웃 다시 잡고 se로 실행 시키기
         mainLogoImage.snp.makeConstraints {
             $0.top.equalToSuperview().inset(166)
             $0.bottom.equalToSuperview().inset(378)
             $0.left.right.equalToSuperview().inset(37.11)
         }
         mainName.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(466)
+            $0.top.equalTo(mainLogoImage.snp.bottom)
             $0.bottom.equalToSuperview().inset(329)
             $0.centerX.equalToSuperview()
         }
@@ -70,21 +86,12 @@ class StartingPageViewController: UIViewController {
             $0.left.right.equalToSuperview().inset(42.5)
             $0.height.equalTo(45)
         }
-        
     }
-    
-    func navigationbar() {
-        self.navigationItem.leftBarButtonItem = nil
-        let signupBackbutton = UIBarButtonItem(title: "회원가입", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = signupBackbutton
-        self.navigationItem.backBarButtonItem?.tintColor = .black
-    }
-    
-    func button() {
-        loginButton.addTarget(self, action: #selector(moveLoginPage), for: .touchUpInside)
-        signupButton.addTarget(self, action: #selector(moveSignupPage), for: .touchUpInside)
-    }
-    
+}
+
+// MARK: moveLoginPage & moveSignupPage
+
+extension StartingPageViewController {
     @objc func moveLoginPage() {
         self.navigationController?.pushViewController(FirstLoginViewController(), animated: true)
         let loginBackbutton = UIBarButtonItem(title: "로그인", style: .plain, target: nil, action: nil)
@@ -98,6 +105,4 @@ class StartingPageViewController: UIViewController {
         self.navigationItem.backBarButtonItem = Backbutton
         self.navigationItem.backBarButtonItem?.tintColor = .black
     }
-    
 }
-
