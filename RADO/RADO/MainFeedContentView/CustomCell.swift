@@ -1,10 +1,3 @@
-//
-//  CustomCell.swift
-//  KakaoTalkViewCloneCoding
-//
-//  Created by 조영준 on 2023/05/27.
-//
-
 import UIKit
 import SnapKit
 import Then
@@ -14,10 +7,9 @@ class CustomCell: UITableViewCell {
     static let cellId = "CellId"
     
     let profileImage = UIImageView().then {
-        $0.layer.cornerRadius = 30
-        $0.layer.masksToBounds = true
-        $0.image = UIImage(systemName: "testImage")
-        $0.tintColor = .label
+        $0.image = UIImage(named: "testImage")
+        $0.layer.cornerRadius = 25
+        $0.clipsToBounds = true
     }
     let userNameLabel = UILabel().then {
         $0.text = "유지우"
@@ -33,7 +25,8 @@ class CustomCell: UITableViewCell {
         $0.setImage(UIImage(named: "feedSetting"), for: .normal)
     }
     let feedContentLabel = UILabel().then {
-        $0.text = "dksjlkfdsldkljlfkah4u"
+        $0.text = ""
+        $0.numberOfLines = 0 
         $0.font = UIFont.systemFont(ofSize: 14)
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -62,28 +55,25 @@ class CustomCell: UITableViewCell {
     }
     func makeConstraints() {
         profileImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(24)
-            $0.left.equalToSuperview().inset(14)
+            $0.top.equalToSuperview().inset(11)
+            $0.left.equalToSuperview().inset(10)
             $0.width.height.equalTo(50)
         }
         userNameLabel.snp.makeConstraints {
-            $0.top.equalTo(contentView.snp.top).inset(40)
-//            $0.left.equalTo(profileImage.snp.right).offset(10)
-            $0.left.equalTo(contentView.snp.right).offset(10)
-            $0.bottom.equalTo(contentView.snp.bottom)
+            $0.top.equalToSuperview().inset(11)
+            $0.left.equalTo(profileImage.snp.right).offset(11)
         }
         minutesAgoLabel.snp.makeConstraints {
-//            $0.left.equalTo(profileImage.snp.right).offset(80)
-            $0.left.equalTo(contentView.snp.right).offset(80)
-            $0.top.equalTo(userNameLabel.snp.bottom).inset(70)
-            $0.bottom.equalTo(contentView.snp.bottom)
+            $0.left.equalTo(profileImage.snp.right).offset(14)
+            $0.top.equalTo(userNameLabel.snp.bottom).offset(6)
         }
 //        settingButton.snp.makeConstraints {
 //
 //        }
         feedContentLabel.snp.makeConstraints {
-            $0.right.equalTo(self.contentView).inset(30)
-            $0.top.equalTo(self.contentView).inset(20)
+            $0.top.equalToSuperview().inset(72)
+            $0.left.equalToSuperview().inset(18)
+            $0.right.equalToSuperview().inset(22)
         }
     }
 }

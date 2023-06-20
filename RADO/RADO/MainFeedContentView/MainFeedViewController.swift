@@ -28,6 +28,7 @@ class MainFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        MainFeedViewController.tableView.rowHeight = 167
         MainFeedViewController.tableView.delegate = self
         MainFeedViewController.tableView.dataSource = self
 //        tableView.separatorStyle = .none
@@ -95,7 +96,7 @@ class MainFeedViewController: UIViewController {
     
     @objc func moveUserSetting() {
         self.navigationController?.pushViewController(UserSettingViewController(), animated: true)
-        let Backbutton = UIBarButtonItem(title: "새 피드", style: .plain, target: nil, action: nil)
+        let Backbutton = UIBarButtonItem(title: "회원 정보", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = Backbutton
         self.navigationItem.backBarButtonItem?.tintColor = .black
     }

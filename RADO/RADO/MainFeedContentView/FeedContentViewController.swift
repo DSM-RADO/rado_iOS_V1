@@ -7,7 +7,7 @@ class FeedContentViewController: UIViewController {
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
         $0.layer.cornerRadius = 33
-        $0.contentMode = .scaleAspectFill
+//        $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     let userName = UILabel().then {
@@ -25,6 +25,7 @@ class FeedContentViewController: UIViewController {
         $0.backgroundColor = UIColor.white
         $0.layer.cornerRadius = 10
     }
+    //키보드 올라오는거에 맞춰 필드도 올라가게 하기
     let feedContentLabel = UILabel().then {
         $0.text = ""
     }
@@ -35,7 +36,7 @@ class FeedContentViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationBar()
-        self.feedContentField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        feedContentField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,11 +91,11 @@ class FeedContentViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         let images2 = UIImage(named: "testImage")!
 //        let content = "\(feedContentField)"
-        MainFeedViewController.arr.append("dd")
+        MainFeedViewController.arr.append(feedContentField.text ?? "")
         MainFeedViewController.tableView.reloadData()
     }
     @objc func textFieldDidChange(_ sender: Any?) {
-            self.feedContentLabel.text = self.feedContentField.text
+        self.feedContentLabel.text = self.feedContentField.text
         }
     
 }
