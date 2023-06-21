@@ -128,12 +128,49 @@ class UserSettingViewController: UIViewController {
     @objc func deleteAlert() {
         let alert = UIAlertController(title: "진짜로 탈퇴하시겠습니까?", message: "내용을 입력해주세요", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "NO", style: .cancel))
-        alert.addAction(UIAlertAction(title: "YES", style: .destructive))
-        //        func userDelete() {
-//            httpClient.delete(url: /user/, parmas: nil, header: Header.tokenIsEmpty.header())
-//        }
+        alert.addAction(UIAlertAction(title: "YES", style: .destructive){ action in
+//            userDelete(id: id, password: <#T##String#>)
+        })
+
         self.present(alert, animated: true, completion: nil)
     }
     //수정 필요
     
 }
+extension UserSettingViewController {
+    func userDelete(id: String, password: String) {
+        print("통신함")
+        httpClient.delete(
+            url: "/user",
+            parmas: [
+                "userId": id,
+                "userPassword": password
+            ],
+            header: Header.tokenIsEmpty.header()
+        ).response(completionHandler: { res in
+            switch res.response?.statusCode {
+            case 200:
+                let decorder = JSONDecoder()
+                do {
+                    let data = try decorder.decode(LoginModel.self, from: res.data!)
+                    let alert = UIAlertController(title: "회원 탈퇴", message: "뭐라고 쓰지..", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                    print("회원탈퇴")
+//                    self.accessTokenLabel.text = data.access_token
+                    print(data.accessToken)
+                    print(data.expiredAt)
+                } catch {
+                    print(res.response?.statusCode)
+                    print("로그인 실패")
+                    let alert = UIAlertController(title: "로그인 실패", message: "아이디와 비밀번호를 입력해주세요", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            default:
+                print("오류!! \(res.response?.statusCode)")
+            }
+        })
+    }
+}
+

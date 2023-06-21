@@ -24,14 +24,14 @@ class FeedContentViewController: UIViewController {
         $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -9.0, height: 0.0))
         $0.rightViewMode = .always
         $0.backgroundColor = UIColor.white
-        $0.layer.cornerRadius = 10
+        $0.layer.cornerRadius = 8
+        $0.layer.borderColor = UIColor.red.cgColor
+        $0.layer.borderWidth = 1
     }
     //키보드 올라오는거에 맞춰 필드도 올라가게 하기
     let feedContentLabel = UILabel().then {
         $0.text = ""
-    }
-    let textFieldBackground = UIView().then {
-        $0.backgroundColor = UIColor(named: "navy")
+        $0.numberOfLines = 0
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +56,8 @@ class FeedContentViewController: UIViewController {
         [
             profileImage,
             userName,
-            textFieldBackground,
             feedContentLabel,
         ].forEach({self.view.addSubview($0)})
-        textFieldBackground.addSubview(feedContentField)
     }
     
     func makeConstrains() {
@@ -73,19 +71,14 @@ class FeedContentViewController: UIViewController {
             $0.top.equalToSuperview().inset(120)
             $0.left.equalTo(profileImage.snp.right).offset(30)
         }
-        textFieldBackground.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.width.equalToSuperview()
-            $0.height.equalTo(77)
-        }
         feedContentField.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(12)
             $0.bottom.equalToSuperview().inset(18)
-            $0.left.right.equalToSuperview().inset(11)
+            $0.left.right.equalToSuperview().inset(13)
+                   $0.height.equalTo(40)
         }
         feedContentLabel.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(23)
-            $0.left.equalToSuperview().inset(14)
+            $0.left.right.equalToSuperview().inset(14)
         }
     }
     @objc func closeTab() {

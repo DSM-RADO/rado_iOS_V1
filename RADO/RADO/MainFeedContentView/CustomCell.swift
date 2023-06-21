@@ -29,6 +29,7 @@ class CustomCell: UITableViewCell {
     let feedContentLabel = UILabel().then {
         $0.text = ""
         $0.font = UIFont.systemFont(ofSize: 14)
+        $0.numberOfLines  = 0
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

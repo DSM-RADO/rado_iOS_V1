@@ -53,7 +53,6 @@ class StartingPageViewController: UIViewController {
     }
     
 }
-// MARK: addSubView & makeConstrains
 
 extension StartingPageViewController {
     func addSubView() {
@@ -89,8 +88,6 @@ extension StartingPageViewController {
         }
     }
 }
-
-// MARK: moveLoginPage & moveSignupPage
 
 extension StartingPageViewController {
     @objc func moveLoginPage() {

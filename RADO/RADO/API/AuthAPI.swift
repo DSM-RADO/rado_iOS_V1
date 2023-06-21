@@ -9,7 +9,7 @@ enum AuthAPI {
         case .login:
             return "/user/login"
         case .signup:
-            return "/user/signup"
+            return "/user"
         }
     }
 }
