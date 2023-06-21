@@ -34,7 +34,6 @@ class MainFeedViewController: UIViewController {
         MainFeedViewController.tableView.delegate = self
         MainFeedViewController.tableView.dataSource = self
 //        tableView.separatorStyle = .none
-//        tableView.rowHeight = UITableView.automaticDimension
         feedAddButton.addTarget(self, action: #selector(feedPlusButton), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(moveUserSetting), for: .touchUpInside)
     }

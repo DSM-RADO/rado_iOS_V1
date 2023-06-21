@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 class FirstSignupViewController: UIViewController {
-
+    
     let httpClient = HTTPClient()
     let moveViewButton = UIButton(type: .system).then {
         $0.backgroundColor = UIColor(named: "navy")
@@ -59,7 +59,40 @@ class FirstSignupViewController: UIViewController {
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.layer.cornerRadius = 10
     }
-
+    let yearTextField = UITextField().then {
+        $0.placeholder = "연"
+        $0.autocapitalizationType = .none
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
+        $0.leftViewMode = .always
+        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -17.0, height: 0.0))
+        $0.rightViewMode = .always
+        $0.backgroundColor = UIColor(named: "lightGray")
+        $0.layer.cornerRadius = 10
+    }
+    let monthTextField = UITextField().then {
+        $0.placeholder = "월"
+        $0.autocapitalizationType = .none
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
+        $0.leftViewMode = .always
+        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -17.0, height: 0.0))
+        $0.rightViewMode = .always
+        $0.backgroundColor = UIColor(named: "lightGray")
+        $0.layer.cornerRadius = 10
+    }
+    let dayTextField = UITextField().then {
+        $0.placeholder = "일"
+        $0.autocapitalizationType = .none
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
+        $0.leftViewMode = .always
+        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -17.0, height: 0.0))
+        $0.rightViewMode = .always
+        $0.backgroundColor = UIColor(named: "lightGray")
+        $0.layer.cornerRadius = 10
+    }
+    
     let privacyLabel = UILabel().then {
         $0.text = "가입시 개인정보 수집 및 이용약관에\n\t동의하는 것으로 간주합니다."
         $0.numberOfLines = 2
@@ -78,7 +111,7 @@ class FirstSignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        moveViewButton.addTarget(self, action: #selector(moveSecondSignupView), for: .touchUpInside)
+        addTarget()
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,7 +119,7 @@ class FirstSignupViewController: UIViewController {
         addSubView()
         makeConstraints()
     }
-
+    
     func addSubView() {
         [
             moveViewButton,
@@ -97,6 +130,9 @@ class FirstSignupViewController: UIViewController {
             idCheckButton,
             passwordTextField,
             privacyLabel,
+            yearTextField,
+            monthTextField,
+            dayTextField,
         ].forEach({self.view.addSubview($0)})
     }
     
@@ -119,70 +155,125 @@ class FirstSignupViewController: UIViewController {
         nameTextField.snp.makeConstraints {
             $0.top.equalTo(imagePlusButton.snp.bottom).offset(30)
             $0.left.right.equalToSuperview().inset(31)
-            $0.height.equalTo(40)
+            $0.height.equalTo(48)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(8)
             $0.left.equalToSuperview().inset(31)
             $0.right.equalToSuperview().inset(123)
-            $0.height.equalTo(40)
+            $0.height.equalTo(48)
         }
         idCheckButton.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(8)
             $0.left.equalTo(idTextField.snp.right).offset(5)
             $0.right.equalToSuperview().inset(31)
-            $0.height.equalTo(40)
+            $0.height.equalTo(48)
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(31)
-            $0.height.equalTo(40)
+            $0.height.equalTo(48)
+        }
+        yearTextField.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.left.equalToSuperview().inset(31)
+            $0.height.equalTo(48)
+            $0.width.equalTo(105.6)
+        }
+        monthTextField.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.left.equalTo(yearTextField.snp.right).offset(5)
+            $0.height.equalTo(48)
+            $0.width.equalTo(105.6)
+        }
+        dayTextField.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.left.equalTo(monthTextField.snp.right).offset(5)
+            $0.height.equalTo(48)
+            $0.width.equalTo(105.6)
         }
         privacyLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordCheckTextField.snp.bottom).offset(306)
+            $0.top.equalTo(monthTextField.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
             
         }
     }
+    func addTarget() {
+        moveViewButton.addTarget(self, action: #selector(moveSecondSignupView), for: .touchUpInside)
+        idCheckButton.addTarget(self, action: #selector(idCheck), for: .touchUpInside)
+        imagePlusButton.addTarget(self, action: #selector(photoAdd), for: .touchUpInside)
+    }
+    func ale(empty: String) {
+        self.navigationItem.backBarButtonItem?.tintColor = .black
+        let alert = UIAlertController(title: "회원가입 실패", message: "\(empty ) 입력해주세요", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func photoAdd(){
+        //사진 추가
+    }
+    @objc func idCheck() {
+        //중복확인
+    }
     
     @objc func moveSecondSignupView() {
-        self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
-        let loginBackbutton = UIBarButtonItem(title: "회원가입", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = loginBackbutton
-        self.navigationItem.backBarButtonItem?.tintColor = .black
-        guard let name = nameTextField.text else {
+        if(nameTextField.text == ""){
+            ale(empty: "이름을")
+        }else if(idTextField.text == "") {
+            ale(empty: "아이디를")
+        }else if(passwordTextField.text == ""){
+            ale(empty: "암호를")
+        }else if(yearTextField.text == ""){
+            ale(empty: "생년월일을")
+        }else if(monthTextField.text == ""){
+            ale(empty: "생년월일을")
+        }else if(dayTextField.text == ""){
+            ale(empty: "생년월일을")
+        }
+        
+        guard let id = idTextField.text,
+              let name = nameTextField.text,
+              let password = passwordTextField.text,
+              let year = yearTextField.text,
+              let month = monthTextField.text,
+              let day = dayTextField.text
+        else {
             return
         }
-        login(Name: name)
+                signup(id: id, name: name, password: password, year: year, month: month, day: day)
+            }
+        
     }
     
-}
-
 extension FirstSignupViewController {
-    func login(Name: String) {
-        print("통신함")
-        httpClient.post(
-            url: "/user",
-            parmas: [
-                "userName": Name,
-            ],
-            header: Header.tokenIsEmpty.header()
-        ).response(completionHandler: { res in
-            switch res.response?.statusCode {
-            case 200:
-                let decorder = JSONDecoder()
-                do {
-                    let data = try decorder.decode(LoginModel.self, from: res.data!)
-                    print("성공")
-                } catch {
-                    print(res.response?.statusCode)
-                    print("실패")
+        func signup(id: String, name: String, password: String, year: String, month: String, day: String) {
+            print("통신함")
+            httpClient.post(
+                url: "/user",
+                parmas: [
+                    "userId": id,
+                    "userName" : name,
+                    "userPassword" : password,
+                    "year" : year,
+                    "month" : month,
+                    "day" : day
+                ],
+                header: Header.tokenIsEmpty.header()
+            ).response(completionHandler: { res in
+                switch res.response?.statusCode {
+                case 200:
+                    let decorder = JSONDecoder()
+                    do {
+                        let data = try decorder.decode(LoginModel.self, from: res.data!)
+                        print("성공")
+                    } catch {
+                        print(res.response?.statusCode)
+                        print("실패")
+                    }
+                default:
+                    print("오류!! \(res.response?.statusCode)")
                 }
-            default:
-                print("오류!! \(res.response?.statusCode)")
-            }
-        })
+            })
+        }
     }
-}
-
-
