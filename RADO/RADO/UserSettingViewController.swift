@@ -4,6 +4,7 @@ import Then
 
 class UserSettingViewController: UIViewController {
 
+    let httpClient = HTTPClient()
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
         $0.layer.cornerRadius = 75
@@ -52,7 +53,7 @@ class UserSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-//        deleteAccountButton.addTarget(self, action: #selector(deleteAlert), for: .touchUpInside)
+        deleteAccountButton.addTarget(self, action: #selector(deleteAlert), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -123,20 +124,16 @@ class UserSettingViewController: UIViewController {
         }
     }
 
-//    @objc func deleteAlert() {
-//        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-//                
-//            let cancelAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
-//            let okAction = UIAlertAction(title: "YES", style: .default, handler: nil)
-//                
-//            alert.addAction(cancelAction)
-//            alert.addAction(okAction)
-//                
-//            let v = UIViewController()
-//            v.view.backgroundColor = UIColor.white
-//            alert.setValue(v, forKey: "contentViewController")
-//                
-//            self.present(alert, animated: false)
-//    }
+    @objc func deleteAlert() {
+        let alert = UIAlertController(title: "진짜로 탈퇴하시겠습니까?", message: "내용을 입력해주세요", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "NO", style: .cancel))
+        alert.addAction(UIAlertAction(title: "YES", style: .destructive))
+//        func userDelete() {
+//            httpClient.delete(url: /user/, parmas: nil, header: Header.tokenIsEmpty.header())
+//        }
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    //수정 필요
     
 }

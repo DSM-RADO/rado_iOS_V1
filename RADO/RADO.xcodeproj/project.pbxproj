@@ -16,6 +16,7 @@
 		88556D3A2A41F82900B6C65E /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D392A41F82900B6C65E /* AuthAPI.swift */; };
 		88556D3C2A41F83E00B6C65E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D3B2A41F83E00B6C65E /* Header.swift */; };
 		88556D3E2A41F86000B6C65E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D3D2A41F86000B6C65E /* LoginModel.swift */; };
+		88556D402A427BE900B6C65E /* FeedSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88556D3F2A427BE900B6C65E /* FeedSettingView.swift */; };
 		8859A0F92A369A2F002E31B6 /* FirstLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */; };
 		887A04232A3159E200F02845 /* FirstSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A04222A3159E200F02845 /* FirstSignupViewController.swift */; };
 		887A042A2A31B08800F02845 /* SecondSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887A04292A31B08800F02845 /* SecondSignupViewController.swift */; };
@@ -40,6 +41,7 @@
 		88556D392A41F82900B6C65E /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		88556D3B2A41F83E00B6C65E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		88556D3D2A41F86000B6C65E /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		88556D3F2A427BE900B6C65E /* FeedSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSettingView.swift; sourceTree = "<group>"; };
 		8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginViewController.swift; sourceTree = "<group>"; };
 		887A04222A3159E200F02845 /* FirstSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSignupViewController.swift; sourceTree = "<group>"; };
 		887A04292A31B08800F02845 /* SecondSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignupViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				887A042F2A32165400F02845 /* MainFeedViewController.swift */,
 				8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */,
 				88BB6AA12A32B1BC00110798 /* CustomCell.swift */,
+				88556D3F2A427BE900B6C65E /* FeedSettingView.swift */,
 			);
 			path = MainFeedContentView;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				889566C12A3B1F5A00B6D3BC /* UserSettingViewController.swift in Sources */,
+				88556D402A427BE900B6C65E /* FeedSettingView.swift in Sources */,
 				88556D3E2A41F86000B6C65E /* LoginModel.swift in Sources */,
 				88556D3C2A41F83E00B6C65E /* Header.swift in Sources */,
 				88B53F872A30B7C0003DEE96 /* StartingPageViewController.swift in Sources */,

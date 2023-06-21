@@ -199,11 +199,11 @@ class FirstSignupViewController: UIViewController {
         }
     }
     func addTarget() {
-        moveViewButton.addTarget(self, action: #selector(moveSecondSignupView), for: .touchUpInside)
+        moveViewButton.addTarget(self, action: #selector(moveMainFeedView), for: .touchUpInside)
         idCheckButton.addTarget(self, action: #selector(idCheck), for: .touchUpInside)
         imagePlusButton.addTarget(self, action: #selector(photoAdd), for: .touchUpInside)
     }
-    func ale(empty: String) {
+    func alert(empty: String) {
         self.navigationItem.backBarButtonItem?.tintColor = .black
         let alert = UIAlertController(title: "회원가입 실패", message: "\(empty ) 입력해주세요", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
@@ -217,37 +217,38 @@ class FirstSignupViewController: UIViewController {
         //중복확인
     }
     
-    @objc func moveSecondSignupView() {
+    @objc func moveMainFeedView() {
         if(nameTextField.text == ""){
-            ale(empty: "이름을")
+            alert(empty: "이름을")
         }else if(idTextField.text == "") {
-            ale(empty: "아이디를")
+            alert(empty: "아이디를")
         }else if(passwordTextField.text == ""){
-            ale(empty: "암호를")
+            alert(empty: "암호를")
         }else if(yearTextField.text == ""){
-            ale(empty: "생년월일을")
+            alert(empty: "생년월일을")
         }else if(monthTextField.text == ""){
-            ale(empty: "생년월일을")
+            alert(empty: "생년월일을")
         }else if(dayTextField.text == ""){
-            ale(empty: "생년월일을")
+            alert(empty: "생년월일을")
         }
         
         guard let id = idTextField.text,
               let name = nameTextField.text,
               let password = passwordTextField.text,
-              let year = yearTextField.text,
-              let month = monthTextField.text,
-              let day = dayTextField.text
+              let year: Int = Int(yearTextField.text!),
+              let month: Int = Int(monthTextField.text!),
+              let day: Int = Int(dayTextField.text!)
         else {
             return
         }
                 signup(id: id, name: name, password: password, year: year, month: month, day: day)
+        self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
             }
         
     }
     
 extension FirstSignupViewController {
-        func signup(id: String, name: String, password: String, year: String, month: String, day: String) {
+        func signup(id: String, name: String, password: String, year: Int, month: Int, day: Int) {
             print("통신함")
             httpClient.post(
                 url: "/user",

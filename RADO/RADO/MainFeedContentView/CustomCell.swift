@@ -23,6 +23,7 @@ class CustomCell: UITableViewCell {
     }
     let settingButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "feedSetting"), for: .normal)
+        $0.tintColor = UIColor(named: "navy")
     }
     let feedContentLabel = UILabel().then {
         $0.text = ""
@@ -66,13 +67,23 @@ class CustomCell: UITableViewCell {
             $0.left.equalTo(profileImage.snp.right).offset(14)
             $0.top.equalTo(userNameLabel.snp.bottom).offset(6)
         }
-//        settingButton.snp.makeConstraints {
-//
-//        }
+        settingButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(11)
+            $0.right.equalToSuperview().inset(26)
+            $0.height.equalTo(40)
+            $0.width.equalTo(40)
+        }
         feedContentLabel.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
             $0.left.equalToSuperview().inset(18)
             $0.right.equalToSuperview().inset(22)
         }
     }
+    
+//    @objc func feedSetting() {
+//        let alert = UIAlertController(title: "피드 작성 실패", message: "내용을 입력해주세요", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "확인", style: .default))
+//        self.present(alert, animated: true, completion: nil)
+//    }
 }
+

@@ -105,6 +105,7 @@ class MainFeedViewController: UIViewController {
     
 }
 
+
 extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MainFeedViewController.arr.count
@@ -115,7 +116,20 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = MainFeedViewController.arr[indexPath.row]
         return cell
     }
-   
+    //스와이프해서 삭제
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return.delete
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete
+        {
+            tableView.beginUpdates()
+            MainFeedViewController.arr.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+    }
+    //여기까지
     
 }
 

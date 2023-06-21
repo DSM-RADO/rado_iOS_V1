@@ -88,10 +88,13 @@ class FeedContentViewController: UIViewController {
         }
     }
     @objc func closeTab() {
-        navigationController?.popViewController(animated: true)
         if (feedContentField.text == "") {
-            print("error")
+            //타이틀 피드작성실패말고 다른 멘트로 바꾸기
+            let alert = UIAlertController(title: "피드 작성 실패", message: "내용을 입력해주세요", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default))
+            self.present(alert, animated: true, completion: nil)
         } else {
+            navigationController?.popViewController(animated: true)
             let images2 = UIImage(named: "testImage")!
             MainFeedViewController.arr.append(feedContentField.text ?? "")
             MainFeedViewController.tableView.reloadData()
