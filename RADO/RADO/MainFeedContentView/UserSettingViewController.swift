@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 class UserSettingViewController: UIViewController {
 
@@ -128,10 +129,9 @@ class UserSettingViewController: UIViewController {
         let alert = UIAlertController(title: "진짜로 탈퇴하시겠습니까?", message: "내용을 입력해주세요", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "NO", style: .cancel))
         alert.addAction(UIAlertAction(title: "YES", style: .destructive))
-//        func userDelete() {
+        //        func userDelete() {
 //            httpClient.delete(url: /user/, parmas: nil, header: Header.tokenIsEmpty.header())
 //        }
-        
         self.present(alert, animated: true, completion: nil)
     }
     //수정 필요

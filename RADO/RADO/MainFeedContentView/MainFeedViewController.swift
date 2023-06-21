@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 import Then
-
+import Alamofire
 
 class MainFeedViewController: UIViewController {
     

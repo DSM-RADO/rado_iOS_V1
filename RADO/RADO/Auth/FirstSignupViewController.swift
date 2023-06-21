@@ -1,13 +1,7 @@
-//
-//  SignupViewController.swift
-//  RADO
-//
-//  Created by 조영준 on 2023/06/08.
-//
-
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 class FirstSignupViewController: UIViewController {
     

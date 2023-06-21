@@ -85,6 +85,7 @@
 				8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */,
 				88BB6AA12A32B1BC00110798 /* CustomCell.swift */,
 				88556D3F2A427BE900B6C65E /* FeedSettingView.swift */,
+				889566C02A3B1F5A00B6D3BC /* UserSettingViewController.swift */,
 			);
 			path = MainFeedContentView;
 			sourceTree = "<group>";
@@ -157,10 +158,8 @@
 				88556D342A41F7BB00B6C65E /* Header */,
 				88556D332A41F7AF00B6C65E /* Models */,
 				88B53F862A30B7C0003DEE96 /* StartingPageViewController.swift */,
-				8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */,
-				88C59CCB2A37EC9700C875E3 /* Signup */,
+				88C59CCB2A37EC9700C875E3 /* Auth */,
 				8804B49D2A39D79600F90047 /* MainFeedContentView */,
-				889566C02A3B1F5A00B6D3BC /* UserSettingViewController.swift */,
 				88B53F902A30B7C1003DEE96 /* Info.plist */,
 				88C59CCC2A37ECB400C875E3 /* SupportFile */,
 				881E58A42A345DDA0061BE04 /* PTSans */,
@@ -168,13 +167,14 @@
 			path = RADO;
 			sourceTree = "<group>";
 		};
-		88C59CCB2A37EC9700C875E3 /* Signup */ = {
+		88C59CCB2A37EC9700C875E3 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				887A04222A3159E200F02845 /* FirstSignupViewController.swift */,
+				8859A0F82A369A2F002E31B6 /* FirstLoginViewController.swift */,
 				887A04292A31B08800F02845 /* SecondSignupViewController.swift */,
 			);
-			path = Signup;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		88C59CCC2A37ECB400C875E3 /* SupportFile */ = {

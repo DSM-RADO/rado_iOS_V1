@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Then
+import Alamofire
 
 class FeedContentViewController: UIViewController {
     
