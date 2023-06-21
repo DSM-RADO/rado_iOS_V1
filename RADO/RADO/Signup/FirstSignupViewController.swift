@@ -158,36 +158,36 @@ class FirstSignupViewController: UIViewController {
             $0.height.equalTo(48)
         }
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(nameTextField.snp.bottom).offset(8)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(5)
             $0.left.equalToSuperview().inset(31)
             $0.right.equalToSuperview().inset(123)
             $0.height.equalTo(48)
         }
         idCheckButton.snp.makeConstraints {
-            $0.top.equalTo(nameTextField.snp.bottom).offset(8)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(5)
             $0.left.equalTo(idTextField.snp.right).offset(5)
             $0.right.equalToSuperview().inset(31)
             $0.height.equalTo(48)
         }
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(idTextField.snp.bottom).offset(8)
+            $0.top.equalTo(idTextField.snp.bottom).offset(5)
             $0.left.right.equalToSuperview().inset(31)
             $0.height.equalTo(48)
         }
         yearTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(5)
             $0.left.equalToSuperview().inset(31)
             $0.height.equalTo(48)
             $0.width.equalTo(105.6)
         }
         monthTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(5)
             $0.left.equalTo(yearTextField.snp.right).offset(5)
             $0.height.equalTo(48)
             $0.width.equalTo(105.6)
         }
         dayTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(5)
             $0.left.equalTo(monthTextField.snp.right).offset(5)
             $0.height.equalTo(48)
             $0.width.equalTo(105.6)
