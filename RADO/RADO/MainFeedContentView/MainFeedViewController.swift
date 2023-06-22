@@ -121,13 +121,13 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
         return.delete
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete
+        if (editingStyle == .delete)
         {
             tableView.beginUpdates()
             MainFeedViewController.arr.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
-        }
+        } 
     }
     //여기까지
     

@@ -25,7 +25,7 @@ class FeedContentViewController: UIViewController {
         $0.rightViewMode = .always
         $0.backgroundColor = UIColor.white
         $0.layer.cornerRadius = 8
-        $0.layer.borderColor = UIColor(named: "navy")?.cgColor
+        $0.layer.borderColor = UIColor(named: "blue")?.cgColor
         $0.layer.borderWidth = 1
     }
     //키보드 올라오는거에 맞춰 필드도 올라가게 하기

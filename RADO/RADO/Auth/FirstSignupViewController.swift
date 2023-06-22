@@ -7,7 +7,7 @@ class FirstSignupViewController: UIViewController {
     
     let httpClient = HTTPClient()
     let moveViewButton = UIButton(type: .system).then {
-        $0.backgroundColor = UIColor(named: "navy")
+        $0.backgroundColor = UIColor(named: "blue")
         $0.setTitle("다음", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         $0.setTitleColor(UIColor.white, for: .normal)
