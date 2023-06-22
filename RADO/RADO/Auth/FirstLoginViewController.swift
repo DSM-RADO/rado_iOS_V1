@@ -86,10 +86,10 @@ class FirstLoginViewController: UIViewController {
             }
             login(id: id , password: password)
         }
-//        self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
-//        let loginBackbutton = UIBarButtonItem(title: "로그인", style: .plain, target: nil, action: nil)
-//        self.navigationItem.backBarButtonItem = loginBackbutton
-//        self.navigationItem.backBarButtonItem?.tintColor = .black
+        self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
+        let loginBackbutton = UIBarButtonItem(title: "로그인", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = loginBackbutton
+        self.navigationItem.backBarButtonItem?.tintColor = .black
     }
 }
 
@@ -114,10 +114,10 @@ extension FirstLoginViewController {
                     print(data.accessToken)
                     print(data.expiredAt)
                     //아이디와 비번이 일치해야만 이동하도록 함 도경이 서버로 테스트 해볼 것
-                    self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
-                    let loginBackbutton = UIBarButtonItem(title: "로그인", style: .plain, target: nil, action: nil)
-                    self.navigationItem.backBarButtonItem = loginBackbutton
-                    self.navigationItem.backBarButtonItem?.tintColor = .black
+//                    self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
+//                    let loginBackbutton = UIBarButtonItem(title: "로그인", style: .plain, target: nil, action: nil)
+//                    self.navigationItem.backBarButtonItem = loginBackbutton
+//                    self.navigationItem.backBarButtonItem?.tintColor = .black
                 } catch {
                     print(res.response?.statusCode)
                     print("로그인 실패")

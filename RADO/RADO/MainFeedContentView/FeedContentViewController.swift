@@ -25,7 +25,7 @@ class FeedContentViewController: UIViewController {
         $0.rightViewMode = .always
         $0.backgroundColor = UIColor.white
         $0.layer.cornerRadius = 8
-        $0.layer.borderColor = UIColor.red.cgColor
+        $0.layer.borderColor = UIColor(named: "navy")?.cgColor
         $0.layer.borderWidth = 1
     }
     //키보드 올라오는거에 맞춰 필드도 올라가게 하기
@@ -56,6 +56,7 @@ class FeedContentViewController: UIViewController {
         [
             profileImage,
             userName,
+            feedContentField,
             feedContentLabel,
         ].forEach({self.view.addSubview($0)})
     }
@@ -74,7 +75,7 @@ class FeedContentViewController: UIViewController {
         feedContentField.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(18)
             $0.left.right.equalToSuperview().inset(13)
-                   $0.height.equalTo(40)
+            $0.height.equalTo(40)
         }
         feedContentLabel.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(23)

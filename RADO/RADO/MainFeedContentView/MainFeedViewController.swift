@@ -68,7 +68,7 @@ class MainFeedViewController: UIViewController {
     func makeConstraints() {
 
         feedLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(22)
+            $0.top.equalToSuperview().inset(25)
             $0.left.equalToSuperview().inset(26)
         }
         settingButton.snp.makeConstraints {

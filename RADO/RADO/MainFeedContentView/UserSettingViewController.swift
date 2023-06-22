@@ -126,6 +126,10 @@ class UserSettingViewController: UIViewController {
     }
 
     @objc func deleteAlert() {
+//        let id = "dd"
+//        let name = "ddd"
+//        userIdLabel =
+//        userInformation(id: idd, name: namee)
         let alert = UIAlertController(title: "진짜로 탈퇴하시겠습니까?", message: "내용을 입력해주세요", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "NO", style: .cancel))
         alert.addAction(UIAlertAction(title: "YES", style: .destructive){ action in
@@ -138,6 +142,34 @@ class UserSettingViewController: UIViewController {
     
 }
 extension UserSettingViewController {
+    func userInformation(id: String, name: String) {
+        httpClient.get(
+            url: "/user",
+            parmas: [
+                "userId": id,
+                "userName": name,
+//                "userYear": year,
+//                "userMonth": month,
+//                "userDay": day
+            ],
+            header: Header.tokenIsEmpty.header()
+        ).response(completionHandler: { res in
+            switch res.response?.statusCode {
+            case 200:
+                let decoder = JSONDecoder()
+                do {
+                    self.userIdLabel.text = id
+                    self.userNameLabel.text = name
+//                    userBirthDayLabel.text = "\(year,monthday)"
+                    print("성공")
+                } catch {
+                    print(res.response?.statusCode)
+                }
+            default:
+                print("오류!! \(res.response?.statusCode)")
+            }
+        })
+    }
     func userDelete(id: String, password: String) {
         print("통신함")
         httpClient.delete(
