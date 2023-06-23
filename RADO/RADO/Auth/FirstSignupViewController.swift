@@ -87,12 +87,15 @@ class FirstSignupViewController: UIViewController {
     
     let privacyLabel = UILabel().then {
         $0.text = "가입시 개인정보 수집 및 이용약관에\n\t동의하는 것으로 간주합니다."
+        $0.font = UIFont.systemFont(ofSize: 13)
         $0.numberOfLines = 2
         $0.textColor = UIColor(named: "gray")
     }
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
-        $0.layer.cornerRadius = 75.76
+        $0.contentMode = .scaleAspectFit
+        $0.layer.cornerRadius = $0.frame.height / 2
+        $0.layer.shouldRasterize = true
         $0.clipsToBounds = true
         //원형으로 만들기
     }
@@ -131,16 +134,12 @@ class FirstSignupViewController: UIViewController {
     }
     
     func makeConstraints() {
-        moveViewButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(10)
-            $0.left.right.equalToSuperview().inset(17)
-            $0.height.equalTo(70)
-        }
         profileImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(171)
+            $0.top.equalToSuperview().inset(115)
+            $0.bottom.equalToSuperview().inset(531.48)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(150)
-            $0.height.equalTo(151.52)
+//            $0.width.equalTo(150)
+//            $0.height.equalTo(151.52)
         }
         imagePlusButton.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
@@ -154,8 +153,8 @@ class FirstSignupViewController: UIViewController {
         yearBackground.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(5)
             $0.left.equalToSuperview().inset(29)
+            $0.right.equalToSuperview().inset(233)
             $0.height.equalTo(44)
-            $0.width.equalTo(128)
         }
         yearLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
@@ -163,14 +162,14 @@ class FirstSignupViewController: UIViewController {
         monthTextField.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(5)
             $0.left.equalTo(yearBackground.snp.right).offset(2)
+            $0.right.equalToSuperview().inset(131)
             $0.height.equalTo(44)
-            $0.width.equalTo(100)
         }
         dayTextField.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(5)
             $0.left.equalTo(monthTextField.snp.right).offset(2)
+            $0.right.equalToSuperview().inset(29)
             $0.height.equalTo(44)
-            $0.width.equalTo(100)
         }
         idTextField.snp.makeConstraints {
             $0.top.equalTo(dayTextField.snp.bottom).offset(5)
@@ -190,9 +189,13 @@ class FirstSignupViewController: UIViewController {
             $0.height.equalTo(44)
         }
         privacyLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(30)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(125)
             $0.centerX.equalToSuperview()
-            
+        }
+        moveViewButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(26)
+            $0.left.right.equalToSuperview().inset(17)
+            $0.height.equalTo(48)
         }
     }
     func addTarget() {

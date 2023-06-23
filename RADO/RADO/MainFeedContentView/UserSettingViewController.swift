@@ -8,13 +8,10 @@ class UserSettingViewController: UIViewController {
     let httpClient = HTTPClient()
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
-        $0.layer.cornerRadius = 75
+        $0.contentMode = .scaleAspectFit
+        $0.layer.cornerRadius = $0.frame.size.height/2
         $0.clipsToBounds = true
         //원형으로 만들기
-    }
-    let imagePlusButton = UIButton(type: .system).then {
-        $0.setTitle("변경하기", for: .normal)
-        $0.setTitleColor(UIColor(named: "gray"), for: .normal)
     }
     let userIdBackground = UIView().then {
         $0.backgroundColor = UIColor(named: "lightGray")
@@ -66,7 +63,6 @@ class UserSettingViewController: UIViewController {
     func addSubView() {
         [
             profileImage,
-            imagePlusButton,
             userIdLabel,
             userNameLabel,
             userBirthDayLabel,
@@ -87,12 +83,8 @@ class UserSettingViewController: UIViewController {
             $0.width.equalTo(150)
             $0.height.equalTo(151.52)
         }
-        imagePlusButton.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
-        }
         userIdBackground.snp.makeConstraints {
-            $0.top.equalTo(imagePlusButton.snp.bottom).offset(30)
+            $0.top.equalTo(profileImage.snp.bottom).offset(30)
             $0.left.right.equalToSuperview().inset(45)
             $0.height.equalTo(40)
         }
@@ -120,7 +112,8 @@ class UserSettingViewController: UIViewController {
         }
         deleteAccountButton.snp.makeConstraints {
             $0.top.equalTo(userIdBackground.snp.bottom).offset(227)
-            $0.left.right.equalToSuperview().inset(45)
+            $0.bottom.equalToSuperview().inset(93)
+            $0.left.right.equalToSuperview().inset(43)
             $0.height.equalTo(40)
         }
     }

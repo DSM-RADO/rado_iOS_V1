@@ -56,19 +56,19 @@ class FirstLoginViewController: UIViewController {
     }
     
     func makeConstraints() {
-        moveViewButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(30)
-            $0.left.right.equalToSuperview().inset(17)
-            $0.height.equalTo(70)
-        }
         idTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(143)
-            $0.left.right.equalToSuperview().inset(21)
+            $0.top.equalToSuperview().inset(150)
+            $0.left.right.equalToSuperview().inset(29)
             $0.height.equalTo(48)
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(8)
-            $0.left.right.equalToSuperview().inset(21)
+            $0.left.right.equalToSuperview().inset(29)
+            $0.height.equalTo(48)
+        }
+        moveViewButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(26)
+            $0.left.right.equalToSuperview().inset(17)
             $0.height.equalTo(48)
         }
     }
