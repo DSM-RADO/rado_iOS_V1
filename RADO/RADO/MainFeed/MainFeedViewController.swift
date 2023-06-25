@@ -12,7 +12,7 @@ class MainFeedViewController: UIViewController {
     }
     let settingButton = UIButton(type: .system).then {
         $0.setImage(UIImage(named: "settingImage"), for: .normal)
-        $0.tintColor = UIColor(named: "navy")
+        $0.tintColor = .black
     }
     static let tableView = UITableView().then {
         $0.backgroundColor = .white
@@ -69,10 +69,10 @@ class MainFeedViewController: UIViewController {
 
         feedLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(25)
-            $0.left.equalToSuperview().inset(26)
+            $0.left.equalToSuperview().inset(19)
         }
         settingButton.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(50)
+            $0.top.equalToSuperview().inset(27)
             $0.right.equalToSuperview().inset(27)
             $0.width.height.equalTo(30)
         }
@@ -82,8 +82,8 @@ class MainFeedViewController: UIViewController {
             $0.width.equalToSuperview()
         }
         feedAddButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(16)
-            $0.right.equalToSuperview().inset(17)
+            $0.bottom.equalToSuperview().inset(44)
+            $0.right.equalToSuperview().inset(39)
             $0.width.height.equalTo(60)
         }
     }
@@ -116,20 +116,6 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = MainFeedViewController.arr[indexPath.row]
         return cell
     }
-    //스와이프해서 삭제
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return.delete
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete)
-        {
-            tableView.beginUpdates()
-            MainFeedViewController.arr.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-        } 
-    }
-    //여기까지
     
 }
 

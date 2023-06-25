@@ -6,10 +6,17 @@ import Alamofire
 class UserSettingViewController: UIViewController {
 
     let httpClient = HTTPClient()
+//    let profileImage = UIImageView(frame: CGRect(x: 110, y: 137, width: 150, height: 151.52)).then {
+//        $0.image = UIImage(named: "testImage")
+//        $0.contentMode = .scaleAspectFit
+//        $0.layer.cornerRadius = $0.frame.size.height/2
+//        $0.clipsToBounds = true
+//        //원형으로 만들기
+//    }
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
         $0.contentMode = .scaleAspectFit
-        $0.layer.cornerRadius = $0.frame.size.height/2
+        $0.layer.cornerRadius = 75
         $0.clipsToBounds = true
         //원형으로 만들기
     }
@@ -25,7 +32,6 @@ class UserSettingViewController: UIViewController {
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.layer.cornerRadius = 10
     }
-    
     let userIdLabel = UILabel().then {
         $0.text = "userId"
         $0.textColor = UIColor(named: "gray")
@@ -81,10 +87,11 @@ class UserSettingViewController: UIViewController {
             $0.top.equalToSuperview().inset(147)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(150)
-            $0.height.equalTo(151.52)
+            $0.height.equalTo(151)
         }
         userIdBackground.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(30)
+//            $0.top.equalTo(profileImage.snp.bottom).offset(30)
+            $0.top.equalToSuperview().inset(360)
             $0.left.right.equalToSuperview().inset(45)
             $0.height.equalTo(40)
         }
@@ -111,7 +118,6 @@ class UserSettingViewController: UIViewController {
             $0.left.equalToSuperview().inset(12)
         }
         deleteAccountButton.snp.makeConstraints {
-            $0.top.equalTo(userIdBackground.snp.bottom).offset(227)
             $0.bottom.equalToSuperview().inset(93)
             $0.left.right.equalToSuperview().inset(43)
             $0.height.equalTo(40)

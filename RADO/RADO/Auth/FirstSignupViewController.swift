@@ -65,6 +65,7 @@ class FirstSignupViewController: UIViewController {
     let monthTextField = UITextField().then {
         $0.placeholder = "월"
         $0.autocapitalizationType = .none
+        $0.keyboardType = .numberPad
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
         $0.leftViewMode = .always
@@ -76,6 +77,7 @@ class FirstSignupViewController: UIViewController {
     let dayTextField = UITextField().then {
         $0.placeholder = "일"
         $0.autocapitalizationType = .none
+        $0.keyboardType = .numberPad
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
         $0.leftViewMode = .always
@@ -93,14 +95,14 @@ class FirstSignupViewController: UIViewController {
     }
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
-        $0.contentMode = .scaleAspectFit
-        $0.layer.cornerRadius = $0.frame.height / 2
-        $0.layer.shouldRasterize = true
+        $0.contentMode = .scaleAspectFill
+        $0.layer.cornerRadius = 75
         $0.clipsToBounds = true
         //원형으로 만들기
     }
     let imagePlusButton = UIButton(type: .system).then {
         $0.setTitle("추가하기", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         $0.setTitleColor(UIColor(named: "gray"), for: .normal)
     }
     override func viewDidLoad() {
@@ -135,23 +137,24 @@ class FirstSignupViewController: UIViewController {
     
     func makeConstraints() {
         profileImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(115)
-            $0.bottom.equalToSuperview().inset(531.48)
+//            $0.top.equalToSuperview().inset(125)
+            
             $0.centerX.equalToSuperview()
-//            $0.width.equalTo(150)
-//            $0.height.equalTo(151.52)
+            $0.width.equalTo(150)
+            $0.height.equalTo(151.52)
         }
         imagePlusButton.snp.makeConstraints {
+//            $0.top.equalToSuperview().inset(286.52)
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
         nameTextField.snp.makeConstraints {
-            $0.top.equalTo(imagePlusButton.snp.bottom).offset(30)
+            $0.top.equalTo(imagePlusButton.snp.bottom).offset(29.48)
             $0.left.right.equalToSuperview().inset(29)
             $0.height.equalTo(44)
         }
         yearBackground.snp.makeConstraints {
-            $0.top.equalTo(nameTextField.snp.bottom).offset(5)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(4)
             $0.left.equalToSuperview().inset(29)
             $0.right.equalToSuperview().inset(233)
             $0.height.equalTo(44)
@@ -160,39 +163,42 @@ class FirstSignupViewController: UIViewController {
             $0.centerX.centerY.equalToSuperview()
         }
         monthTextField.snp.makeConstraints {
-            $0.top.equalTo(nameTextField.snp.bottom).offset(5)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(4)
             $0.left.equalTo(yearBackground.snp.right).offset(2)
             $0.right.equalToSuperview().inset(131)
             $0.height.equalTo(44)
         }
         dayTextField.snp.makeConstraints {
-            $0.top.equalTo(nameTextField.snp.bottom).offset(5)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(4)
             $0.left.equalTo(monthTextField.snp.right).offset(2)
             $0.right.equalToSuperview().inset(29)
             $0.height.equalTo(44)
         }
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(dayTextField.snp.bottom).offset(5)
+            $0.top.equalTo(dayTextField.snp.bottom).offset(4)
             $0.left.equalToSuperview().inset(29)
             $0.right.equalToSuperview().inset(123)
             $0.height.equalTo(44)
         }
         idCheckButton.snp.makeConstraints {
-            $0.top.equalTo(dayTextField.snp.bottom).offset(5)
+            $0.top.equalTo(dayTextField.snp.bottom).offset(4)
             $0.left.equalTo(idTextField.snp.right).offset(4)
             $0.right.equalToSuperview().inset(29)
             $0.height.equalTo(44)
         }
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(idTextField.snp.bottom).offset(5)
+            $0.top.equalTo(idTextField.snp.bottom).offset(4)
             $0.left.right.equalToSuperview().inset(29)
             $0.height.equalTo(44)
         }
         privacyLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(125)
+//            $0.top.equalTo(passwordTextField.snp.bottom).offset(125)
+            $0.bottom.equalToSuperview().inset(158.32)
+            $0.top.equalToSuperview().inset(653)
             $0.centerX.equalToSuperview()
         }
         moveViewButton.snp.makeConstraints {
+//            $0.top.equalTo(privacyLabel.snp.bottom).offset(84.32)
             $0.bottom.equalToSuperview().inset(26)
             $0.left.right.equalToSuperview().inset(17)
             $0.height.equalTo(48)
