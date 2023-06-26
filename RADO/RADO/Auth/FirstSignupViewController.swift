@@ -143,7 +143,6 @@ class FirstSignupViewController: UIViewController {
             $0.height.equalTo(151.52)
         }
         imagePlusButton.snp.makeConstraints {
-//            $0.top.equalToSuperview().inset(286.52)
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
         }
