@@ -89,7 +89,7 @@ class FirstSignupViewController: UIViewController {
     
     let privacyLabel = UILabel().then {
         $0.text = "가입시 개인정보 수집 및 이용약관에\n\t동의하는 것으로 간주합니다."
-        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.font = UIFont.systemFont(ofSize: 12)
         $0.numberOfLines = 2
         $0.textColor = UIColor(named: "gray")
     }
@@ -137,8 +137,7 @@ class FirstSignupViewController: UIViewController {
     
     func makeConstraints() {
         profileImage.snp.makeConstraints {
-//            $0.top.equalToSuperview().inset(125)
-            
+            $0.top.equalToSuperview().inset(125)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(150)
             $0.height.equalTo(151.52)
