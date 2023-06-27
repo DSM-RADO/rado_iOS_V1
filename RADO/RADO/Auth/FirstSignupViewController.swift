@@ -219,9 +219,7 @@ class FirstSignupViewController: UIViewController {
 }
 
 extension FirstSignupViewController {
-    @objc func photoAdd(){
-        //사진 추가
-    }
+    
     @objc func idCheckAlert() {
         let alert = UIAlertController(title: "커스텀하기 싫다..", message: "사용 가능한 ID입니다.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
@@ -253,7 +251,6 @@ extension FirstSignupViewController {
             self.navigationController?.pushViewController(MainFeedViewController(), animated: true)
         }
     }
-    
     func signup(id: String, name: String, password: String, year: Int, month: Int, day: Int) {
         print("통신함")
         httpClient.post(
@@ -283,5 +280,25 @@ extension FirstSignupViewController {
                 print("오류!! \(res.response?.statusCode)")
             }
         })
+    }
+}
+
+extension FirstSignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @objc func photoAdd(){
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImage.contentMode = .scaleAspectFit
+            profileImage.image = pickedImage //4
+        }
+        dismiss(animated: true, completion: nil)
+    }
+        
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
