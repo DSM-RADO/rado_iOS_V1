@@ -6,13 +6,6 @@ import Alamofire
 class UserSettingViewController: UIViewController {
 
     let httpClient = HTTPClient()
-//    let profileImage = UIImageView(frame: CGRect(x: 110, y: 137, width: 150, height: 151.52)).then {
-//        $0.image = UIImage(named: "testImage")
-//        $0.contentMode = .scaleAspectFit
-//        $0.layer.cornerRadius = $0.frame.size.height/2
-//        $0.clipsToBounds = true
-//        //원형으로 만들기
-//    }
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
         $0.contentMode = .scaleAspectFit
