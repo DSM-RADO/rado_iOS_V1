@@ -16,6 +16,8 @@ class FirstLoginViewController: UIViewController {
     let idTextField = UITextField().then {
         $0.placeholder = "아이디"
         $0.autocapitalizationType = .none
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .no
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
@@ -27,6 +29,8 @@ class FirstLoginViewController: UIViewController {
     let passwordTextField = UITextField().then {
         $0.placeholder = "비밀번호"
         $0.autocapitalizationType = .none
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .no
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
         $0.leftViewMode = .always

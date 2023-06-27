@@ -18,6 +18,8 @@ class FeedContentViewController: UIViewController {
     let feedContentField = UITextField().then {
         $0.placeholder = "입력하세요"
         $0.autocapitalizationType = .none
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .no
         $0.font = UIFont.systemFont(ofSize: 15)
         $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 9.0, height: 0.0))
         $0.leftViewMode = .always
