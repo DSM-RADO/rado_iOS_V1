@@ -6,7 +6,7 @@ import Alamofire
 class CustomCell: UITableViewCell {
     
     static let cellId = "CellId"
-
+    
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
         $0.layer.cornerRadius = 25
@@ -40,7 +40,8 @@ class CustomCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubView()
         makeConstraints()
-//        replyButton.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        //        settingButton.addTarget(self, action: #selector(feedSettingButton), for: .touchUpInside)
+        replyButton.addTarget(self, action: #selector(moveReply), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -85,15 +86,15 @@ class CustomCell: UITableViewCell {
             $0.bottom.equalToSuperview().inset(12)
             $0.right.equalToSuperview().inset(22)
         }
+        
+        //    @objc func feedSettingButton() {
+        //        let alert = UIAlertController(title: "피드 작성 실패", message: "내용을 입력해주세요", preferredStyle: .alert)
+        //        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        //        self.present(alert, animated: true, completion: nil)
     }
-    
-//    @objc func feedSetting() {
-//        let alert = UIAlertController(title: "피드 작성 실패", message: "내용을 입력해주세요", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "확인", style: .default))
-//        self.present(alert, animated: true, completion: nil)
-//    }
-//    @objc func moveReply() {
-//        self.
-//    }
+    @objc func moveReply() {
+        let nextView = ReplyViewController()
+        self.window?.rootViewController?.navigationController?.pushViewController(nextView, animated: true)
+    }
 }
 
