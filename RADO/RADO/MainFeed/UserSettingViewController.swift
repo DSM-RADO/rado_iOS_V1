@@ -11,7 +11,7 @@ class UserSettingViewController: UIViewController {
         $0.contentMode = .scaleAspectFit
         $0.layer.cornerRadius = 75
         $0.clipsToBounds = true
-        //원형으로 만들기
+        //이미지는 회원가입 뷰에서 보낸 이미지 끌어오는 방식으로 하기
     }
     let userIdBackground = UIView().then {
         $0.backgroundColor = UIColor(named: "lightGray")
@@ -131,6 +131,8 @@ class UserSettingViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     //수정 필요
+    //삭제에 성공하면 alert하나 더 만들어서 성공했다고 알림 띄워주기
+    //실패해도 실패했다고 띄우기
     
 }
 extension UserSettingViewController {
@@ -162,39 +164,39 @@ extension UserSettingViewController {
             }
         })
     }
-    func userDelete(id: String, password: String) {
-        print("통신함")
-        httpClient.delete(
-            url: "/user",
-            parmas: [
-                "userId": id,
-                "userPassword": password
-            ],
-            header: Header.tokenIsEmpty.header()
-        ).response(completionHandler: { res in
-            switch res.response?.statusCode {
-            case 200:
-                let decorder = JSONDecoder()
-                do {
-                    let data = try decorder.decode(LoginModel.self, from: res.data!)
-                    let alert = UIAlertController(title: "회원 탈퇴", message: "뭐라고 쓰지..", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .default))
-                    self.present(alert, animated: true, completion: nil)
-                    print("회원탈퇴")
-//                    self.accessTokenLabel.text = data.access_token
-                    print(data.accessToken)
-                    print(data.expiredAt)
-                } catch {
-                    print(res.response?.statusCode)
-                    print("로그인 실패")
-                    let alert = UIAlertController(title: "로그인 실패", message: "아이디와 비밀번호를 입력해주세요", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .default))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            default:
-                print("오류!! \(res.response?.statusCode)")
-            }
-        })
-    }
+//    func userDelete(id: String, password: String) {
+//        print("통신함")
+//        httpClient.delete(
+//            url: "/user",
+//            parmas: [
+//                "userId": id,
+//                "userPassword": password
+//            ],
+//            header: Header.tokenIsEmpty.header()
+//        ).response(completionHandler: { res in
+//            switch res.response?.statusCode {
+//            case 200:
+//                let decorder = JSONDecoder()
+//                do {
+//                    let data = try decorder.decode(LoginModel.self, from: res.data!)
+//                    let alert = UIAlertController(title: "회원 탈퇴", message: "뭐라고 쓰지..", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+//                    self.present(alert, animated: true, completion: nil)
+//                    print("회원탈퇴")
+////                    self.accessTokenLabel.text = data.access_token
+//                    print(data.accessToken)
+//                    print(data.expiredAt)
+//                } catch {
+//                    print(res.response?.statusCode)
+//                    print("로그인 실패")
+//                    let alert = UIAlertController(title: "로그인 실패", message: "아이디와 비밀번호를 입력해주세요", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+//                    self.present(alert, animated: true, completion: nil)
+//                }
+//            default:
+//                print("오류!! \(res.response?.statusCode)")
+//            }
+//        })
+//    }
 }
 
