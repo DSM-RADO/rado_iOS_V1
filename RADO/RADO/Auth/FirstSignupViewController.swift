@@ -234,14 +234,14 @@ extension FirstSignupViewController {
     @objc func moveMainFeedView() {
         if(nameTextField.text == ""){
             alert(empty: "이름을")
-        }else if(idTextField.text == "") {
-            alert(empty: "아이디를")
-        }else if(passwordTextField.text == ""){
-            alert(empty: "비밀번호를")
         }else if(monthTextField.text == ""){
             alert(empty: "생년월일을")
         }else if(dayTextField.text == ""){
             alert(empty: "생년월일을")
+        }else if(idTextField.text == "") {
+            alert(empty: "아이디를")
+        }else if(passwordTextField.text == ""){
+            alert(empty: "비밀번호를")
         }else {
             guard
                 let id = idTextField.text,
@@ -287,6 +287,7 @@ extension FirstSignupViewController {
             }
         })
     }
+    //회원가입 서버통신 코드
 }
 
 extension FirstSignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -295,14 +296,15 @@ extension FirstSignupViewController: UIImagePickerControllerDelegate, UINavigati
         imagePicker.sourceType = .photoLibrary
         imagePicker.delegate = self
         present(imagePicker, animated: true)
-    }
+    }//추가하기 버튼을 누르면 앨범에 있는 사진을 보여주는 코드
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImage.contentMode = .scaleAspectFill
             profileImage.image = pickedImage //4
         }
         dismiss(animated: true, completion: nil)
-    }
+    }//앨범에 있는 사진을 프로필 이미지로 적용시키는 코드
+
         
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
