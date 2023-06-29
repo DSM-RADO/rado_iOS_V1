@@ -5,10 +5,11 @@ import Alamofire
 
 class FeedContentViewController: UIViewController {
     
+    let httpClient = HTTPClient()
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
         $0.layer.cornerRadius = 33
-//        $0.contentMode = .scaleAspectFill
+        //        $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     let userName = UILabel().then {
@@ -91,14 +92,40 @@ class FeedContentViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "확인", style: .default))
             self.present(alert, animated: true, completion: nil)
         } else {
-            navigationController?.popViewController(animated: true)
-            let images2 = UIImage(named: "testImage")!
             MainFeedViewController.arr.append(feedContentField.text ?? "")
+            navigationController?.popViewController(animated: true)
+            let content = feedContentField.text!
+            feedPost(content: content)
             MainFeedViewController.tableView.reloadData()
         }
     }
     @objc func textFieldDidChange(_ sender: Any?) {
         self.feedContentLabel.text = self.feedContentField.text
-        }
-    
+    }//피드 내용을 입력할 때 화면에 동시에 보이게 하는 코드
+}
+
+extension FeedContentViewController {
+    func feedPost(content: String) {
+        httpClient.post(url: "/board",
+                        parmas: [
+                            "content" : content
+                        ],
+                        header: Header.tokenIsEmpty.header()
+        ).response(completionHandler: { res in
+            switch res.response?.statusCode{
+            case 200:
+                let decorder = JSONDecoder()
+                do {
+                    _ = try decorder.decode(LoginModel.self, from: res.data!)
+                    print("성공")
+                } catch {
+                    print(res.response?.statusCode)
+                    print("실패")
+                }
+            default:
+                print("오류!! \(res.response?.statusCode)")
+            }
+        })
+        
+    }//피드 내용을 서버로 보내는 코드
 }
