@@ -6,6 +6,7 @@ import Alamofire
 class CustomCell: UITableViewCell {
     
     static let cellId = "CellId"
+    var actionView: (() -> Void)?
     
     let profileImage = UIImageView().then {
         $0.image = UIImage(named: "testImage")
@@ -93,8 +94,7 @@ class CustomCell: UITableViewCell {
         //        self.present(alert, animated: true, completion: nil)
     }
     @objc func moveReply() {
-        let nextView = ReplyViewController()
-        self.window?.rootViewController?.navigationController?.pushViewController(nextView, animated: true)
+        actionView?()
     }
 }
 
