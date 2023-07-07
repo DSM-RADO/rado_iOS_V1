@@ -13,32 +13,8 @@ class FirstSignupViewController: UIViewController {
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.layer.cornerRadius = 8
     }
-    let nameTextField = UITextField().then {
-        $0.placeholder = "이름"
-        $0.autocapitalizationType = .none
-        $0.autocorrectionType = .no
-        $0.spellCheckingType = .no
-        $0.font = UIFont.systemFont(ofSize: 16)
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -14.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.layer.cornerRadius = 10
-    }
-    let idTextField = UITextField().then {
-        $0.placeholder = "아이디"
-        $0.autocapitalizationType = .none
-        $0.autocorrectionType = .no
-        $0.spellCheckingType = .no
-        $0.font = UIFont.systemFont(ofSize: 16)
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -14.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.layer.cornerRadius = 10
-    }
+    let nameTextField = DefaultTextField(placeholder: "이름")
+    let idTextField = DefaultTextField(placeholder: "아이디")
     let idCheckButton = UIButton(type: .system).then {
         $0.setTitle("중복확인", for: .normal)
         $0.backgroundColor = UIColor(named: "pink")
@@ -46,19 +22,7 @@ class FirstSignupViewController: UIViewController {
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.layer.cornerRadius = 10
     }
-    let passwordTextField = UITextField().then {
-        $0.placeholder = "비밀번호"
-        $0.autocapitalizationType = .none
-        $0.autocorrectionType = .no
-        $0.spellCheckingType = .no
-        $0.font = UIFont.systemFont(ofSize: 16)
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -14.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.layer.cornerRadius = 10
-    }
+    let passwordTextField = DefaultTextField(placeholder: "비밀번호")
     let yearBackground = UIView().then {
         $0.backgroundColor = UIColor(named: "lightGray")
         $0.layer.cornerRadius = 10
@@ -68,30 +32,8 @@ class FirstSignupViewController: UIViewController {
         $0.textColor = UIColor(named: "gray")
         $0.font = UIFont.systemFont(ofSize: 16)
     }
-    let monthTextField = UITextField().then {
-        $0.placeholder = "월"
-        $0.autocapitalizationType = .none
-        $0.keyboardType = .numberPad
-        $0.font = UIFont.systemFont(ofSize: 16)
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -14.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.layer.cornerRadius = 10
-    }
-    let dayTextField = UITextField().then {
-        $0.placeholder = "일"
-        $0.autocapitalizationType = .none
-        $0.keyboardType = .numberPad
-        $0.font = UIFont.systemFont(ofSize: 16)
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 14.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -14.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.layer.cornerRadius = 10
-    }
+    let monthTextField = DefaultTextField(placeholder: "월")
+    let dayTextField = DefaultTextField(placeholder: "일")
     
     let privacyLabel = UILabel().then {
         $0.text = "가입시 개인정보 수집 및 이용약관에\n\t동의하는 것으로 간주합니다."
@@ -155,7 +97,6 @@ class FirstSignupViewController: UIViewController {
         nameTextField.snp.makeConstraints {
             $0.top.equalTo(imagePlusButton.snp.bottom).offset(29.48)
             $0.left.right.equalToSuperview().inset(29)
-            $0.height.equalTo(44)
         }
         yearBackground.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(4)
@@ -170,7 +111,6 @@ class FirstSignupViewController: UIViewController {
             $0.top.equalTo(nameTextField.snp.bottom).offset(4)
             $0.left.equalTo(yearBackground.snp.right).offset(2)
             $0.right.equalToSuperview().inset(131)
-            $0.height.equalTo(44)
         }
         dayTextField.snp.makeConstraints {
             $0.top.equalTo(nameTextField.snp.bottom).offset(4)
@@ -182,7 +122,6 @@ class FirstSignupViewController: UIViewController {
             $0.top.equalTo(dayTextField.snp.bottom).offset(4)
             $0.left.equalToSuperview().inset(29)
             $0.right.equalToSuperview().inset(123)
-            $0.height.equalTo(44)
         }
         idCheckButton.snp.makeConstraints {
             $0.top.equalTo(dayTextField.snp.bottom).offset(4)
@@ -193,16 +132,13 @@ class FirstSignupViewController: UIViewController {
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(4)
             $0.left.right.equalToSuperview().inset(29)
-            $0.height.equalTo(44)
         }
         privacyLabel.snp.makeConstraints {
-//            $0.top.equalTo(passwordTextField.snp.bottom).offset(125)
             $0.bottom.equalToSuperview().inset(158.32)
             $0.top.equalToSuperview().inset(653)
             $0.centerX.equalToSuperview()
         }
         moveViewButton.snp.makeConstraints {
-//            $0.top.equalTo(privacyLabel.snp.bottom).offset(84.32)
             $0.bottom.equalToSuperview().inset(26)
             $0.left.right.equalToSuperview().inset(17)
             $0.height.equalTo(48)
@@ -218,7 +154,7 @@ class FirstSignupViewController: UIViewController {
         let alert = UIAlertController(title: "회원가입 실패", message: "\(empty) 입력해주세요", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         self.present(alert, animated: true, completion: nil)
-    }
+    }// 이 alert 함수가 밑에 moveFeedView에서 작동함
     func idCheck() {
         
     }

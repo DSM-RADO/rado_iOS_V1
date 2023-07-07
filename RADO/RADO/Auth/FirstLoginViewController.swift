@@ -13,32 +13,8 @@ class FirstLoginViewController: UIViewController {
         $0.setTitleColor(UIColor.white, for: .normal)
         $0.layer.cornerRadius = 8
     }
-    let idTextField = UITextField().then {
-        $0.placeholder = "아이디"
-        $0.autocapitalizationType = .none
-        $0.autocorrectionType = .no
-        $0.spellCheckingType = .no
-        $0.font = UIFont.systemFont(ofSize: 15)
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -17.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.layer.cornerRadius = 10
-    }
-    let passwordTextField = UITextField().then {
-        $0.placeholder = "비밀번호"
-        $0.autocapitalizationType = .none
-        $0.autocorrectionType = .no
-        $0.spellCheckingType = .no
-        $0.font = UIFont.systemFont(ofSize: 15)
-        $0.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 17.0, height: 0.0))
-        $0.leftViewMode = .always
-        $0.rightView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: -17.0, height: 0.0))
-        $0.rightViewMode = .always
-        $0.backgroundColor = UIColor(named: "lightGray")
-        $0.layer.cornerRadius = 10
-    }
+    let idTextField = DefaultTextField(placeholder: "아이디")
+    let passwordTextField = DefaultTextField(placeholder: "비밀번호")
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -63,12 +39,10 @@ class FirstLoginViewController: UIViewController {
         idTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(150)
             $0.left.right.equalToSuperview().inset(29)
-            $0.height.equalTo(48)
         }
         passwordTextField.snp.makeConstraints {
             $0.top.equalTo(idTextField.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(29)
-            $0.height.equalTo(48)
         }
         moveViewButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(26)
