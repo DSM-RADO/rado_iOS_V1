@@ -163,9 +163,9 @@ class FirstSignupViewController: UIViewController {
 extension FirstSignupViewController {
     
     @objc func idCheckAlert() {
-        let alert = UIAlertController(title: "커스텀하기 싫다..", message: "사용 가능한 ID입니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
-        self.present(alert, animated: true, completion: nil)
+        let idAlert = CustomAlert()
+        idAlert.alertMessage(title: "사용 가능한 아이디입니다.")
+        present(idAlert, animated: true)
     }
     @objc func moveMainFeedView() {
         if(nameTextField.text == ""){
