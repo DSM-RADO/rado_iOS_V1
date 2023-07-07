@@ -30,7 +30,6 @@ class StartingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        navigationbar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,13 +39,6 @@ class StartingPageViewController: UIViewController {
         button()
     }
 
-    func navigationbar() {
-        self.navigationItem.leftBarButtonItem = nil
-        let signupBackbutton = UIBarButtonItem(title: "회원가입", style: .plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = signupBackbutton
-        self.navigationItem.backBarButtonItem?.tintColor = .black
-    }
-    
     func button() {
         loginButton.addTarget(self, action: #selector(moveLoginPage), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(moveSignupPage), for: .touchUpInside)
