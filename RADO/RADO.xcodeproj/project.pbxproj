@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		80E3A82532235D9F42E3722C /* Pods_RADO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291050C0CACDE63092304359 /* Pods_RADO.framework */; };
 		8804B49F2A39D7D200F90047 /* FeedContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */; };
+		880A42C52A5504220073DDDC /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880A42C42A5504220073DDDC /* CustomAlert.swift */; };
+		880A42D02A5798800073DDDC /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880A42CF2A5798800073DDDC /* DefaultTextField.swift */; };
 		881E58A82A345E470061BE04 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A52A345E470061BE04 /* OFL.txt */; };
 		881E58A92A345E470061BE04 /* PTSansNarrow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A62A345E470061BE04 /* PTSansNarrow-Regular.ttf */; };
 		881E58AA2A345E470061BE04 /* PTSansNarrow-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 881E58A72A345E470061BE04 /* PTSansNarrow-Bold.otf */; };
@@ -34,6 +36,8 @@
 		291050C0CACDE63092304359 /* Pods_RADO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RADO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AB1FB23B6B55A8900FB3060 /* Pods-RADO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RADO.release.xcconfig"; path = "Target Support Files/Pods-RADO/Pods-RADO.release.xcconfig"; sourceTree = "<group>"; };
 		8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentViewController.swift; sourceTree = "<group>"; };
+		880A42C42A5504220073DDDC /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		880A42CF2A5798800073DDDC /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		881E58A52A345E470061BE04 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		881E58A62A345E470061BE04 /* PTSansNarrow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansNarrow-Regular.ttf"; sourceTree = "<group>"; };
 		881E58A72A345E470061BE04 /* PTSansNarrow-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSansNarrow-Bold.otf"; sourceTree = "<group>"; };
@@ -83,12 +87,36 @@
 			children = (
 				887A042F2A32165400F02845 /* MainFeedViewController.swift */,
 				8804B49E2A39D7D200F90047 /* FeedContentViewController.swift */,
-				88BB6AA12A32B1BC00110798 /* CustomCell.swift */,
-				88556D652A43BC9400B6C65E /* ReplyViewController.swift */,
 				88556D3F2A427BE900B6C65E /* FeedSettingView.swift */,
+				88556D652A43BC9400B6C65E /* ReplyViewController.swift */,
 				889566C02A3B1F5A00B6D3BC /* UserSettingViewController.swift */,
 			);
 			path = MainFeed;
+			sourceTree = "<group>";
+		};
+		880A42C32A5504050073DDDC /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				880A42C42A5504220073DDDC /* CustomAlert.swift */,
+				88BB6AA12A32B1BC00110798 /* CustomCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		880A42C62A55043A0073DDDC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				88B53F862A30B7C0003DEE96 /* StartingPageViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		880A42CE2A57985C0073DDDC /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				880A42CF2A5798800073DDDC /* DefaultTextField.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		881E58A42A345DDA0061BE04 /* PTSans */ = {
@@ -158,7 +186,9 @@
 				88556D352A41F7C000B6C65E /* API */,
 				88556D342A41F7BB00B6C65E /* Header */,
 				88556D332A41F7AF00B6C65E /* Models */,
-				88B53F862A30B7C0003DEE96 /* StartingPageViewController.swift */,
+				880A42C32A5504050073DDDC /* Component */,
+				880A42CE2A57985C0073DDDC /* Custom */,
+				880A42C62A55043A0073DDDC /* Main */,
 				88C59CCB2A37EC9700C875E3 /* Auth */,
 				8804B49D2A39D79600F90047 /* MainFeed */,
 				88B53F902A30B7C1003DEE96 /* Info.plist */,
@@ -318,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				880A42D02A5798800073DDDC /* DefaultTextField.swift in Sources */,
 				889566C12A3B1F5A00B6D3BC /* UserSettingViewController.swift in Sources */,
 				88556D402A427BE900B6C65E /* FeedSettingView.swift in Sources */,
 				88556D3E2A41F86000B6C65E /* LoginModel.swift in Sources */,
@@ -333,6 +364,7 @@
 				88BB6AA22A32B1BC00110798 /* CustomCell.swift in Sources */,
 				8804B49F2A39D7D200F90047 /* FeedContentViewController.swift in Sources */,
 				88556D662A43BC9400B6C65E /* ReplyViewController.swift in Sources */,
+				880A42C52A5504220073DDDC /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -92,11 +92,7 @@ class FeedContentViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "확인", style: .default))
             self.present(alert, animated: true, completion: nil)
         } else {
-            MainFeedViewController.arr.append(feedContentField.text ?? "")
             navigationController?.popViewController(animated: true)
-            let content = feedContentField.text!
-            feedPost(content: content)
-            MainFeedViewController.tableView.reloadData()
         }
     }
     @objc func textFieldDidChange(_ sender: Any?) {

@@ -5,7 +5,7 @@ import Alamofire
 
 class MainFeedViewController: UIViewController {
     
-    static var arr: [String] = []
+    var arr: [String] = []
     let feedLabel = UILabel().then {
         $0.text = "피드"
         $0.font = UIFont.systemFont(ofSize: 24)
@@ -14,7 +14,7 @@ class MainFeedViewController: UIViewController {
         $0.setImage(UIImage(named: "settingImage"), for: .normal)
         $0.tintColor = .black
     }
-    static let tableView = UITableView().then {
+    let tableView = UITableView().then {
         $0.backgroundColor = .white
         $0.allowsSelection = true
         $0.register(CustomCell.self, forCellReuseIdentifier: CustomCell.cellId)
@@ -30,9 +30,9 @@ class MainFeedViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
 //        MainFeedViewController.tableView.estimatedRowHeight = 0
-        MainFeedViewController.tableView.rowHeight = 150
-        MainFeedViewController.tableView.delegate = self
-        MainFeedViewController.tableView.dataSource = self
+        tableView.rowHeight = 150
+        tableView.delegate = self
+        tableView.dataSource = self
 //        tableView.separatorStyle = .none
         feedAddButton.addTarget(self, action: #selector(feedPlusButton), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(moveUserSetting), for: .touchUpInside)
@@ -60,7 +60,7 @@ class MainFeedViewController: UIViewController {
         [
             feedLabel,
             settingButton,
-            MainFeedViewController.tableView,
+            tableView,
             feedAddButton
         ].forEach({self.view.addSubview($0)})
     }
@@ -76,7 +76,7 @@ class MainFeedViewController: UIViewController {
             $0.right.equalToSuperview().inset(27)
             $0.width.height.equalTo(30)
         }
-        MainFeedViewController.tableView.snp.makeConstraints {
+        tableView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(85)
             $0.bottom.equalToSuperview()
             $0.width.equalToSuperview()
@@ -91,7 +91,7 @@ class MainFeedViewController: UIViewController {
     
     @objc func feedPlusButton() {
         self.navigationController?.pushViewController(FeedContentViewController(), animated: true)
-        let backButton = UIBarButtonItem(title: "새 피드", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "피드 작성", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         self.navigationItem.backBarButtonItem?.tintColor = .black
     }
@@ -108,14 +108,19 @@ class MainFeedViewController: UIViewController {
 
 extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MainFeedViewController.arr.count
+        return arr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.cellId, for: indexPath) as! CustomCell
-        cell.textLabel?.text = MainFeedViewController.arr[indexPath.row]
+        cell.textLabel?.text = arr[indexPath.row]
+//        cell.actionView = {
+//            self.moveView()
+//        }()
         return cell
     }
-    
+    func moveView() {
+        navigationController?.pushViewController(ReplyViewController(), animated: true)
+    }
 }
 

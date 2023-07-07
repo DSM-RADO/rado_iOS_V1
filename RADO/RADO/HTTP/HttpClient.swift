@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 
 class HTTPClient {
-    let baseURL = "http://192.168.1.23:8080"
+    let baseURL = "http://192.168.1.28:8080"
     
     func get(url: String, parmas: Parameters?, header: HTTPHeaders) -> DataRequest {
         return AF.request(baseURL + url,
