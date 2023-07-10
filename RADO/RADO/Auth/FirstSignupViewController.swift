@@ -163,8 +163,7 @@ class FirstSignupViewController: UIViewController {
 extension FirstSignupViewController {
     
     @objc func idCheckAlert() {
-        let idAlert = CustomAlert()
-        idAlert.alertMessage(title: "사용 가능한 아이디입니다.")
+        let idAlert = CustomAlert(title: "사용 가능한 아이디입니다.")
         present(idAlert, animated: true)
     }
     @objc func moveMainFeedView() {
